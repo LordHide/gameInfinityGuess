@@ -1,0 +1,26 @@
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-banner {
+    width: 100vw;
+    height: 100px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-element {
+    margin-right: 2vw;
+    margin-left: 2vw;
+    margin-bottom: 1vh;
+}
+
+.logo {
+    width: 5vw;
+    margin-top: 2vh;
+}
+
+.drawer {
+    margin-top: 3vh;
+}

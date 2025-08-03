@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { Heading } from "@chakra-ui/react"
+import TopBanner from './components/TopBanner.tsx';
+import MainBody from './components/MainBody.tsx';
+import './css/App.css'
 import { Provider } from "./components/ui/provider"
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <div className="App">
       <Provider>
-        <Heading size="6xl">Titulo</Heading>
+        <TopBanner />
+        <MainBody />
       </Provider>
-    </>
+    </div >
   )
 }
 
