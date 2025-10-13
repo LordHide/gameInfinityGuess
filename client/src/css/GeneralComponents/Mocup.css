@@ -1,0 +1,72 @@
+.loading-text.fake {
+    animation-name: disappear-fake;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+.mockup-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2220;
+    z-index: 3;
+
+    animation-name: disappear-background-fake;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+.loading-logo.fake {
+    position: absolute;
+
+    animation-name: trasition-position;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes disappear-fake {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+@keyframes disappear-background-fake {
+    from {
+        background-color: #222;
+    }
+
+    to {
+        background-color: #2220;
+    }
+
+}
+
+@keyframes trasition-position {
+    from {
+        width: 25vw;
+        top: 0;
+        left: 0;
+    }
+
+    99% {
+        opacity: 1;
+    }
+
+    to {
+        width: 5vw;
+        top: -32vh;
+        left: -34vw;
+        opacity: 0;
+    }
+
+}

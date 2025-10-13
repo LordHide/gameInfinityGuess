@@ -4,10 +4,26 @@
 
 .unit-card-logo {
     grid-area: logo;
-    background-color: #777;
+    /* background-color: #777; */
     width: 8vw;
     text-align: center;
     z-index: 2;
+    background-color: #7770;
+    /* clip-path: polygon(0% 20%, 20% 0%, 100% 0%, 100% 100%, 20% 100%, 0% 80%); */
+}
+
+.unit-card-logo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 8vw;
+    clip-path: polygon(0% 15%, 30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 85%);
+    background-color: #777;
+    height: 25vh;
 }
 
 .unit-card-logo img {
@@ -18,7 +34,7 @@
     border-radius: 50%;
 }
 
-.unit-card-logo:before {
+/* .unit-card-logo:before {
     content: '';
     position: absolute;
     top: 0;
@@ -30,78 +46,53 @@
 .unit-card-logo::after {
     content: '';
     position: absolute;
-    bottom: 4.8vh;
+    bottom: 3.8vh;
     left: 0;
     border-top: 35px solid #777;
     border-left: 35px solid #242424;
-}
+} */
 
 .unit-card-name {
     grid-area: name;
-    background-color: #777;
-    width: 50vw;
+    background-color: #7770;
+    width: 55vw;
     text-align: center;
     font: 600 18px Source, sans-serif;
     padding: 3vh 0 2vh;
 }
 
 .unit-card-name:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 8vw;
+    right: 0;
+    bottom: 0;
+    width: 55vw;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 12%, 100% 100%, 0% 100%);
+    background-color: #777;
+}
+
+/* .unit-card-name:before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     border-top: 35px solid #242424;
     border-left: 35px solid #777;
-}
-
-.unit-card-stats {
-    grid-area: stats;
-    background-color: #ddd;
-    text-align: center;
-    height: var(--stats-height);
-    color: #444;
-    font: 700 14px Orbitron, arial, serif;
-    text-align: center;
-    cursor: default;
-    z-index: 1;
-}
-
-.unit-card-stats::before {
-    content: '';
-    position: absolute;
-    border-radius: 0 30% 0 0;
-    right: -2vw;
-    background-color: #ddd;
-    height: var(--stats-height);
-    width: 6vw;
-}
-
-.unit-card-numbers {
-    grid-area: numbers;
-    background-color: #ddd;
-    text-align: center;
-    height: var(--stats-height);
-    color: #444;
-    font: 700 14px Orbitron, arial, serif;
-    text-align: center;
-    cursor: default;
-    z-index: 1;
-    box-shadow: 20px 20px 18px #00000050;
-}
-
-.unit-card-numbers::before {
-    content: '';
-    position: absolute;
-    border-radius: 0 0 30% 0;
-    right: -2vw;
-    background-color: #ddd;
-    height: var(--stats-height);
-    width: 6vw;
-}
+} */
 
 .unit-card-equipment {
     grid-area: equipment;
     background-color: #777;
+    text-align: center;
+}
+
+.unit-card-equipment span,
+.unit-card-skills span {
+    position: sticky;
+    z-index: 2;
     text-align: center;
 }
 

@@ -1,0 +1,54 @@
+.unit-card-stats {
+    grid-area: stats;
+    background-color: #ddd;
+    text-align: center;
+    height: var(--stats-height);
+    color: #444;
+    font: 700 14px Orbitron, arial, serif;
+    text-align: center;
+    cursor: default;
+    z-index: 1;
+    display: grid;
+    padding-left: 6vw;
+    grid-template: "a a a a a a a a a" 3vh "b c c c c c c c c" 3vh;
+}
+
+.unit-card-stats::before {
+    content: '';
+    position: absolute;
+    border-radius: 0 30% 30% 0;
+    right: -2vw;
+    background-color: #ddd;
+    height: var(--stats-height);
+    width: 6vw;
+}
+
+/* .unit-card-stats::before {
+    content: '';
+    position: absolute;
+    border-radius: 0 0 30% 0;
+    right: -2vw;
+    background-color: #ddd;
+    height: var(--stats-height);
+    width: 6vw;
+} */
+
+/* .unit-card-numbers {
+    grid-area: numbers;
+    background-color: #ddd;
+    text-align: center;
+    height: var(--stats-height);
+    color: #444;
+    font: 700 14px Orbitron, arial, serif;
+    text-align: center;
+    cursor: default;
+    z-index: 1;
+    box-shadow: 20px 20px 18px #00000050;
+    display: flex;
+    padding-left: 6vw;
+} */
+
+.unit-card-stats div,
+.unit-card-numbers div {
+    width: 5vw;
+}

@@ -21,6 +21,28 @@
     margin-top: 2vh;
 }
 
+.logo.mockup {
+    animation-name: apear;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
 .drawer {
     margin-top: 3vh;
+}
+
+@keyframes apear {
+    from {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }

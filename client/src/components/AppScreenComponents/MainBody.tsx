@@ -1,4 +1,4 @@
-import UnitCard from "./UnitCard"
+import UnitCard from "../UnitCardComponents/UnitCard"
 import { AbsoluteCenter } from "@chakra-ui/react";
 
 export function MainBody() {
