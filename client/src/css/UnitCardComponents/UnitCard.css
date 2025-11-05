@@ -1,0 +1,53 @@
+:root {
+    --stats-height: 6vh;
+}
+
+.unit-card-logo {
+    grid-area: logo;
+    width: 8vw;
+    text-align: center;
+    z-index: 2;
+    background-color: #7770;
+}
+
+.unit-card-logo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 8vw;
+    clip-path: polygon(0% 15%, 30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 85%);
+    background-color: #777;
+    height: 24vh;
+}
+
+.unit-card-logo img {
+    margin-top: 2vh;
+    width: 9vw;
+    margin-left: 2vw;
+    /* box-shadow: 18px 13px 22px black; */
+    filter: drop-shadow(-1px -1px 7px #000);
+    border-radius: 50%;
+}
+
+.unit-card-loadout-section {
+    grid-area: loadout;
+    background-color: #242424;
+    padding-top: 3vh;
+    text-align: center;
+}
+
+.unit-card {
+    display: grid;
+    grid-template-areas:
+        'logo logo name name name name'
+        'logo logo stats stats stats stats'
+        'logo logo numbers numbers numbers numbers'
+        'logo logo equipment equipment equipment equipment'
+        'logo logo skills skills skills skills'
+        'logo logo empty empty empty empty'
+        'nothing nothing loadout loadout loadout loadout';
+}

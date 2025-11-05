@@ -1,0 +1,21 @@
+.unit-card-name {
+    grid-area: name;
+    background-color: #7770;
+    width: 55vw;
+    text-align: center;
+    font: 600 18px Source, sans-serif;
+    padding: 3vh 0 2vh;
+}
+
+.unit-card-name:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 8vw;
+    right: 0;
+    bottom: 0;
+    width: 55vw;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 12%, 100% 100%, 0% 100%);
+    background-color: #777;
+}

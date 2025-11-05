@@ -1,19 +1,21 @@
-import ProfileDataContext from '../../context/ProfileDataContext.tsx';
+import { type Stats, type ProfileState, useDiscoveredData } from '../../hooks/Stores/useDiscoveredData.tsx';
 
-import { useContext } from 'react'
 
-import '../../css/UnitCardComponents/UnitCardStats.css'
+import '../../css/UnitCardComponents/UnitCardStats.css';
 
 export function UnitCardStats() {
-    const [profileData, setProfileData] = useContext(ProfileDataContext);
+    const discoveredDataStore: ProfileState = useDiscoveredData();
+    const statsMap: Stats = discoveredDataStore.stats;
+    const labels: string[] = statsMap ? Array.from(statsMap.keys()) : [];
 
     return <>
         <div className="unit-card-stats">
-            <div>MOV</div><div>CC</div><div>BS</div><div>PH</div><div>WIP</div><div>ARM</div><div>BTS</div><div>VITA</div><div>S</div>
-            {/* <div>??</div><div>??</div><div>??</div><div>??</div><div>??</div><div>??</div><div>??</div><div>??</div><div>??</div> */}
-            {profileData.stats.map((stat: string | number) => {
-                return <div>{stat}</div>
-            })}
+            {labels.map((label, index) => (
+                <div key={index}>{label}</div>
+            ))}
+            {labels.map((label, index) => (
+                <div key={index}>{statsMap.get(label)}</div>
+            ))}
         </div>
     </>;
 }

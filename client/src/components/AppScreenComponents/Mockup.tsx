@@ -1,13 +1,13 @@
-import appLogo from '../../assets/logo.png'
+import appLogo from '../../assets/logo.png';
 import { AbsoluteCenter } from "@chakra-ui/react";
 
 import TopBanner from './TopBanner.tsx';
 import MainBody from './MainBody.tsx';
 
-import '../../css/GeneralComponents/LoadinScreen.css'
-import '../../css/GeneralComponents/Mocup.css'
+import '../../css/GeneralComponents/LoadinScreen.css';
+import '../../css/GeneralComponents/Mocup.css';
 
-export function Mockup() {
+export function Mockup(): React.JSX.Element {
 
     return <>
         <div className='mockup-background'>

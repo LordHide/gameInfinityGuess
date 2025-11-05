@@ -1,0 +1,36 @@
+.gameModeSection {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gameModeButton {
+    width: 34vw;
+    height: 55vh;
+    opacity: 0.65;
+    cursor: pointer;
+    transition: clip-path 1s;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    text-align: center;
+}
+
+.gameModeButton:hover {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+}
+
+.gameModeImg {
+    max-height: 100%;
+    margin: auto;
+}
+
+.gameModeButton div {
+    position: relative;
+    top: -14%;
+    left: 0;
+    text-align: center;
+    font-size: 3.1vw;
+    color: rgb(240, 240, 240)
+}

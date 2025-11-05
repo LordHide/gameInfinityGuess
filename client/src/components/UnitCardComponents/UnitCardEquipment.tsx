@@ -1,8 +1,17 @@
-import '../../css/UnitCard.css'
+import { type ProfileState, useDiscoveredData } from '../../hooks/Stores/useDiscoveredData.tsx';
 
-export function UnitCardEquipment() {
+import '../../css/UnitCardComponents/UnitCardEquipment.css';
+
+
+export function UnitCardEquipment(): React.JSX.Element {
+    const discoveredDataStore: ProfileState = useDiscoveredData();
+    const equipment: string[] = discoveredDataStore.equipment;
+
     return <div className="unit-card-equipment">
-        <span>Equipment</span>
+        {equipment.length > 0 ? <span>Equipment:</span> : <></>}
+        {equipment.map((item: string, index: number) => (
+            <span key={index + "equipment"}>{item}</span>
+        ))}
     </div>;
 }
 

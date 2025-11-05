@@ -1,0 +1,14 @@
+.unit-card-skills {
+    grid-area: skills;
+    background-color: #777;
+    text-align: left;
+    padding-left: 1vw;
+    padding-bottom: 1vh;
+}
+
+.unit-card-skills span {
+    position: sticky;
+    z-index: 2;
+    text-align: center;
+    margin-left: 1vw;
+}

@@ -1,0 +1,29 @@
+.gameUI {
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    pointer-events: none;
+    height: 5vh;
+    width: 11vw;
+    padding-left: 1vw;
+    display: flex;
+}
+
+.gameUI-health,
+.gameUI-accuracy {
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+.gameUI-health img,
+.gameUI-accuracy img {
+    width: 50%;
+    height: 50%;
+    margin-top: 0.8vh;
+}
+
+.gameUI-health-text,
+.gameUI-accuracy-text {
+    padding-top: 0.5vh;
+}

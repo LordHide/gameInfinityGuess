@@ -1,0 +1,13 @@
+.unit-card-equipment {
+    grid-area: equipment;
+    background-color: #777;
+    text-align: left;
+    padding-left: 1vw;
+}
+
+.unit-card-equipment span {
+    position: sticky;
+    z-index: 2;
+    text-align: center;
+    margin-left: 1vw;
+}

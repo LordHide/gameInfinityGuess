@@ -1,0 +1,13 @@
+.unit-card-loadout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr 2fr;
+    text-align: left;
+}
+
+.unit-card-loadout-element {
+    padding-left: 1vw;
+}
+
+.unit-card-loadout-element span {
+    padding-right: 1vw;
+}

@@ -28,4 +28,18 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.post("/api/getProfileData")
 def get_profile_data():
-    return {"data": {"name": "Corregidor Alguaciles", "stats":{"Mov": "4-4", "CC": 14, "BS": 11, "PH": 10, "WIP": 13, "ARM": 1, "BTS": 0, "S": 2}}, "success": 1}
+    return {
+        "data": {
+            "name": "fusiliers", 
+            "equipment": [], 
+            "skills": [], 
+            "stats":{"Mov": "4-4", "CC": 13, "BS": 12, "PH": 10, "WIP": 12, "ARM": 1, "BTS": 0, "VITA": 1, "S": 2},
+            "loadouts": [
+                { "skills":[], "equipment":[], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipment":[], "Range_Weapons": ["Heavy Machine Gun"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipment":[], "Range_Weapons": ["Missile Launcher"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipment":[], "Range_Weapons": ["MULTI Sniper Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":["Hacker"], "equipment":["Hacking Device"], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]}
+                         ]
+        }, 
+        "success": 1}

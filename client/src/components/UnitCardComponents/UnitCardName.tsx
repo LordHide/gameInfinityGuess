@@ -1,13 +1,12 @@
-import ProfileDataContext from '../../context/ProfileDataContext.tsx';
+import { type ProfileState, useDiscoveredData } from '../../hooks/Stores/useDiscoveredData.tsx';
 
-import { useContext } from 'react'
+import '../../css/UnitCardComponents/UnitCardName.css';
 
-import '../../css/UnitCard.css'
 
-export function UnitCardName() {
-    const [profileData, setProfileData] = useContext(ProfileDataContext);
+export function UnitCardName(): React.JSX.Element {
+    const discoveredDataStore: ProfileState = useDiscoveredData();
 
-    return <div className="unit-card-name">{profileData.name}</div>;
+    return <div className="unit-card-name">{discoveredDataStore.name}</div>;
 }
 
 export default UnitCardName;

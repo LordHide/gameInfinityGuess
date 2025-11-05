@@ -1,9 +1,9 @@
-import appLogo from '../../assets/logo.png'
+import appLogo from '../../assets/logo.png';
 import { AbsoluteCenter } from "@chakra-ui/react";
 
-import '../../css/GeneralComponents/LoadinScreen.css'
+import '../../css/GeneralComponents/LoadinScreen.css';
 
-export function LoadinScreen() {
+export function LoadinScreen(): React.JSX.Element {
 
     return <>
         <AbsoluteCenter>
