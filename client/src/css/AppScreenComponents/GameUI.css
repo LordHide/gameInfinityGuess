@@ -1,10 +1,22 @@
+.player-section {
+    display: flex;
+    height: 12vh;
+}
+
+.player-section div {
+    height: 100%;
+    width: 33%;
+    display: flex;
+}
+
+.player-buttons {
+    padding-left: 5%;
+}
+
 .gameUI {
-    position: absolute;
-    top: 20vh;
-    left: 0;
     pointer-events: none;
     height: 5vh;
-    width: 11vw;
+    width: 23vw;
     padding-left: 1vw;
     display: flex;
 }
@@ -16,14 +28,27 @@
     display: flex;
 }
 
-.gameUI-health img,
-.gameUI-accuracy img {
-    width: 50%;
-    height: 50%;
-    margin-top: 0.8vh;
+.gameUI-health {
+    margin-right: 25px;
 }
 
-.gameUI-health-text,
+.gameUI-health img,
+.gameUI-accuracy img {
+    width: 33%;
+    height: 50%;
+    margin-top: 0.8vh;
+    image-rendering: pixelated;
+}
+
+.gameUI-health img {
+    margin-right: 10px;
+}
+
 .gameUI-accuracy-text {
-    padding-top: 0.5vh;
+    padding-top: 2.5vh;
+    padding-left: 0.8vw;
+}
+
+.hint-button {
+    margin-left: 5%;
 }

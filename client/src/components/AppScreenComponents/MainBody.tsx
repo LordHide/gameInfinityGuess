@@ -1,16 +1,22 @@
 
-import UnitCard from "../UnitCardComponents/UnitCard";
 import GameUI from "./GameUI";
+import HintButton from "./HintButton";
 import GuessButton from "./GuessButton";
+import UnitCard from "../UnitCardComponents/UnitCard";
 
-import '../../css/AppScreenComponents/GuessButton.css';
+import '../../css/AppScreenComponents/HintButton.css';
 
 import { AbsoluteCenter } from "@chakra-ui/react";
 
 export function MainBody(): React.JSX.Element {
     return <>
-        <GameUI />
-        <GuessButton />
+        <div className="player-section">
+            <GameUI />
+            <div className="player-buttons">
+                <HintButton />
+                <GuessButton />
+            </div>
+        </div>
         <AbsoluteCenter>
             <UnitCard />
         </AbsoluteCenter>

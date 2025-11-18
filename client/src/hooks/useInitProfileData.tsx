@@ -8,7 +8,7 @@ export function useInitProfileData(): (jsonData: ProfileData) => void {
     return (jsonData: ProfileData) => {
         ProfileDataStore.updateName(jsonData.name);
         ProfileDataStore.updateStats(jsonData.stats);
-        ProfileDataStore.updateEquipment(jsonData.equipment);
+        ProfileDataStore.updateEquipment(jsonData.equipments);
         ProfileDataStore.updateSkills(jsonData.skills);
         ProfileDataStore.updateLoadout(jsonData.loadouts);
     };

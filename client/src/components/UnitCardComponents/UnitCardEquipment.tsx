@@ -5,7 +5,7 @@ import '../../css/UnitCardComponents/UnitCardEquipment.css';
 
 export function UnitCardEquipment(): React.JSX.Element {
     const discoveredDataStore: ProfileState = useDiscoveredData();
-    const equipment: string[] = discoveredDataStore.equipment;
+    const equipment: string[] = discoveredDataStore.equipments;
 
     return <div className="unit-card-equipment">
         {equipment.length > 0 ? <span>Equipment:</span> : <></>}

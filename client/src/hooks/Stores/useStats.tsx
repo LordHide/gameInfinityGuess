@@ -1,31 +1,13 @@
 import { create } from 'zustand';
 
-type ExtraValueTypes = "None" | "Single number" | "Double number" | string[];
+import { type StatDataState, type StatColectionValues, type AplyedValue } from '../../types/typesStore'
 
-export interface ProfileDataState {
-    values: StatsValues[]
-    updateValues: (newValues: StatsValues[]) => void
-}
-
-export interface StatsValues {
-    value?: string
-    label?: string
-    extraValueType?: ExtraValueTypes
-}
-
-const Stats = [
-    { label: "MOV", value: "MOV" },
-    { label: "CC", value: "CC" },
-    { label: "BS", value: "BS" },
-    { label: "PH", value: "PH" },
-    { label: "WIP", value: "ARM" },
-    { label: "BTS", value: "BTS" },
-    { label: "VITA", value: "VITA" },
-    { label: "STR", value: "STR" },
-    { label: "S", value: "S" },
-]
-
-export const useStats = create<ProfileDataState>((set) => ({
-    values: Stats,
-    updateValues: (newValues: StatsValues[]) => set({ values: newValues }),
+export const useStats = create<StatDataState>((set) => ({
+    values: [],
+    selectedValue: undefined,
+    aplyedExtraValue: undefined,
+    updateValues: (newValues: StatColectionValues[]) => set({ values: newValues }),
+    updateSelectedValue: (newSelectedValue: StatColectionValues) => set({ selectedValue: newSelectedValue }),
+    updateAplyedExtraValue: (newAplyedExtraValue: AplyedValue) => set({ aplyedExtraValue: newAplyedExtraValue }),
+    selectValue: (label: string) => set((state) => ({ selectedValue: state.values.find(stat => stat.label === label) })),
 }))

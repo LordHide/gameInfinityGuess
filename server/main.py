@@ -30,16 +30,132 @@ def read_item(item_id: int, q: Union[str, None] = None):
 def get_profile_data():
     return {
         "data": {
-            "name": "fusiliers", 
-            "equipment": [], 
+            "name": "Fusiliers", 
+            "equipments": [], 
             "skills": [], 
-            "stats":{"Mov": "4-4", "CC": 13, "BS": 12, "PH": 10, "WIP": 12, "ARM": 1, "BTS": 0, "VITA": 1, "S": 2},
+            "stats":{"MOV": "4-4", "CC": 13, "BS": 12, "PH": 10, "WIP": 12, "ARM": 1, "BTS": 0, "VITA": 1, "S": 2},
             "loadouts": [
-                { "skills":[], "equipment":[], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
-                { "skills":[], "equipment":[], "Range_Weapons": ["Heavy Machine Gun"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
-                { "skills":[], "equipment":[], "Range_Weapons": ["Missile Launcher"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
-                { "skills":[], "equipment":[], "Range_Weapons": ["MULTI Sniper Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
-                { "skills":["Hacker"], "equipment":["Hacking Device"], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]}
+                { "skills":[], "equipments":[], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipments":[], "Range_Weapons": ["Heavy Machine Gun"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipments":[], "Range_Weapons": ["Missile Launcher"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":[], "equipments":[], "Range_Weapons": ["MULTI Sniper Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
+                { "skills":["Hacker"], "equipments":["Hacking Device"], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]}
                          ]
         }, 
+        "success": 1}
+
+@app.post("/api/getStatsStoreData/{storeType}")
+def get_profile_data(storeType: str):
+    match storeType:
+        case "stats":
+            return {
+                "data":[
+                    { "label": "MOV", "value": "MOV", "extraValueType": "Double number",
+                        "textOptions": [
+                            { "label": "Default", "value": "0-0" },
+                        ] },
+                    { "label": "CC", "value": "CC", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "10" },
+                        ] },
+                    { "label": "BS", "value": "BS", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "10" },
+                        ] },
+                    { "label": "PH", "value": "PH", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "10" },
+                        ] },
+                    { "label": "WIP", "value": "WIP", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "10" },
+                        ] },
+                    { "label": "ARM", "value": "ARM", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "0" },
+                        ] },
+                    { "label": "BTS", "value": "BTS", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "0" },
+                        ] },
+                    { "label": "VITA", "value": "VITA", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "1" },
+                        ] },
+                    { "label": "STR", "value": "STR", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "1" },
+                        ] },
+                    { "label": "S", "value": "S", "extraValueType": "Single number",
+                        "textOptions": [
+                            { "label": "Default", "value": "2" },
+                        ] },
+                ], 
+            "success": 1}
+        case "skills":
+            return {
+                "data":[
+                    {
+                        "label": "Hacker", "value": "Hacker", "extraValueType": "Text Options",
+                        "textOptions": [
+                            { "label": "Basic", "value": "Basic" },
+                            { "label": "Advanced", "value": "Advanced" },
+                        ]
+                    },
+                    { "label": "Forward Observer", "value": "Forward Observer", "extraValueType": "None" },
+                    { "label": "Paramedic", "value": "Paramedic", "extraValueType": "None" },
+                    { "label": "Lieutenant", "value": "Lieutenant", "extraValueType": "Text Options" },
+                    { "label": "Specialist Operative", "value": "Specialist Operative", "extraValueType": "None" },
+                    { "label": "Sapper", "value": "Sapper", "extraValueType": "None" },
+                    { "label": "Triangulated Fire", "value": "Triangulated Fire", "extraValueType": "None" },
+                    { "label": "Minelayer", "value": "Minelayer", "extraValueType": "None" },
+                    { "label": "Sensor", "value": "Sensor", "extraValueType": "None" },
+                ], 
+            "success": 1}
+        case "equipments":
+            return {
+                "data":[
+                    { "label": "Hacking Device", "value": "Hacking Device", "extraValueType": "Text Options" },
+                    { "label": "FastPanda", "value": "FastPanda", "extraValueType": "None" },
+                    { "label": "MediKit", "value": "MediKit", "extraValueType": "Text Options" },
+                    { "label": "Biometric Visor", "value": "Biometric Visor", "extraValueType": "None" },
+                    { "label": "X Visor", "value": "X Visor", "extraValueType": "None" },
+                    { "label": "Multispectral Visor L2", "value": "Multispectral Visor L2", "extraValueType": "None" },
+                    { "label": "Deactivator", "value": "Deactivator", "extraValueType": "None" },
+                    { "label": "GizmoKit", "value": "GizmoKit", "extraValueType": "None" },
+                    { "label": "Deployable Cover", "value": "Deployable Cover", "extraValueType": "None" },
+                ], 
+            "success": 1}
+        case "weapons":
+            return {
+                "data":[
+                    { "label": "Combi Rifle", "value": "Combi Rifle", "extravalueType": "Text Options" },
+                    { "label": "Heavy Machine Gun", "value": "Heavy Machine Gun", "extravalueType": "Text Options" },
+                    { "label": "Missile Launcher", "value": "Missile Launcher", "extravalueType": "Text Options" },
+                    { "label": "MULTI Sniper Rifle", "value": "MULTI Sniper Rifle", "extravalueType": "Text Options" },
+                    { "label": "Flash Pulse", "value": "Flash Pulse", "extravalueType": "Text Options" },
+                    { "label": "Pistol", "value": "Pistol", "extravalueType": "Text Options" },
+                    { "label": "CC Weapon", "value": "CC Weapon", "extravalueType": "Text Options" },
+                    { "label": "D-Charges", "value": "D-Charges", "extravalueType": "Text Options" },
+                    { "label": "AP Mine", "value": "AP Mine", "extravalueType": "Text Options" },
+                ], 
+            "success": 1}
+        case "others":
+            return {
+                "data":[],
+                "success": 1
+            }
+        
+@app.post("/api/getNamesList")
+def get_profile_data():
+    return {
+        "data": [
+            "Antipode Assault Pack Handler",
+            "Acontecimento Regulars",
+            "Blue Wolf Mongol Cavalry"
+            "Daylami",
+            "Eudoros",
+            "Fusiliers",
+            "'Gator' Squadron"
+            ], 
         "success": 1}

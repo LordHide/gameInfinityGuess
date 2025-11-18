@@ -1,5 +1,5 @@
 import { type GameModeState, useGameMode } from '../../hooks/Stores/useGameMode.tsx';
-import { type ConexionStatusState, useConexionStatus } from '../../hooks/Stores/useConexionStatus.tsx';
+import { type ConexionStatusState, useConexionStatusProfileData } from '../../hooks/Stores/useConexionStatusProfileData.tsx';
 
 import basic from '../../assets/basic.png';
 
@@ -9,7 +9,7 @@ import '../../css/AppScreenComponents/GameSelector.css';
 
 export function GameSelector(): React.JSX.Element {
     const gameModeStore: GameModeState = useGameMode();
-    const conexionStatus: ConexionStatusState = useConexionStatus();
+    const conexionStatus: ConexionStatusState = useConexionStatusProfileData();
     return <>
         <AbsoluteCenter>
             <div className="gameModeSection">

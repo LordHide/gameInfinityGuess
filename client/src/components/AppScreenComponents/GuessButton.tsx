@@ -1,15 +1,13 @@
 
 import { Dialog, Button, CloseButton, Portal } from "@chakra-ui/react"
 
-import GuessTabs from './GuessTabs.tsx';
-
 export function GuessButton(): React.JSX.Element {
 
-    return <div className="GuessButtonContainer">
+    return <div className="hint-button">
         <Dialog.Root>
             <Dialog.Trigger asChild>
-                <Button variant="outline" size="md" className="GuessButton">
-                    Make Guess
+                <Button variant="outline" size="lg" className="GuessButton" >
+                    Guess Name
                 </Button>
             </Dialog.Trigger>
             <Portal>
@@ -17,13 +15,9 @@ export function GuessButton(): React.JSX.Element {
                 <Dialog.Positioner>
                     <Dialog.Content>
                         <Dialog.Body>
-                            <GuessTabs />
                         </Dialog.Body>
-                        <Dialog.Footer>
-
-                        </Dialog.Footer>
                         <Dialog.CloseTrigger asChild>
-                            <CloseButton size="sm" />
+                            <CloseButton size="2xs" variant="ghost" />
                         </Dialog.CloseTrigger>
                     </Dialog.Content>
                 </Dialog.Positioner>

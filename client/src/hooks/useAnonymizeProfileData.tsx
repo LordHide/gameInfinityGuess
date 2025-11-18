@@ -3,7 +3,7 @@ import { type Stats, type Loadout } from './Stores/useProfileData.tsx';
 export interface ProfileData {
     name: string;
     stats: Stats;
-    equipment: string[];
+    equipments: string[];
     skills: string[];
     loadouts: Loadout[];
 }
@@ -33,7 +33,7 @@ export function useAnonymizeProfileData(jsonObject: ProfileData): DiscoveredData
         statsMap.set(key, "??");
     }
 
-    for (const key in jsonObject.equipment) {
+    for (const key in jsonObject.equipments) {
         equipmentArray.push("??????????");
     }
 

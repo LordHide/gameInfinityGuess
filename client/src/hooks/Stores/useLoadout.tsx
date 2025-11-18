@@ -1,9 +1,6 @@
 import { create } from 'zustand';
 
-export interface LoadoutState {
-    loadout: Map<string, string[]>[]
-    updateLoadout: (newLoadout: Map<string, string[]>[]) => void
-}
+import { type LoadoutState } from '../../types/typesStore'
 
 export const useLoadout = create<LoadoutState>((set) => ({
     loadout: [],

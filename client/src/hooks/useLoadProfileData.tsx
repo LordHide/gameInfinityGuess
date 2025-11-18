@@ -1,12 +1,12 @@
 import { useInitProfileData } from './useInitProfileData.tsx';
 import { useInitDiscoveredData } from './useInitDiscoveredData.tsx';
-import { useConexionStatus } from './Stores/useConexionStatus.tsx';
+import { useConexionStatusProfileData } from './Stores/useConexionStatusProfileData.tsx';
 
 import { useState, useEffect } from 'react'
 
 export function useLoadProfileData() {
 
-    const stateLoadingStore = useConexionStatus();
+    const stateLoadingStore = useConexionStatusProfileData();
     const stateLoading = stateLoadingStore.LoadingStatus;
     const [errorMesage, setErrorMesage] = useState({});
 

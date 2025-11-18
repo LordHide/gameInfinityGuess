@@ -1,16 +1,16 @@
-import { type ProfileDataState, useSkills } from './Stores/useSkills.tsx';
+import { useSkills } from './Stores/useSkills.tsx';
 import { useStats } from './Stores/useStats.tsx';
 import { useEquipment } from './Stores/useEquipment.tsx';
 import { useWeapons } from './Stores/useWeapons.tsx';
 
-export type StoreTypes = "skills" | "equipments" | "weapons" | "stats";
+import { type StatDataState, type StoreTypes } from '../types/typesStore'
 
-export function useActiveFormStore(storeType: StoreTypes): ProfileDataState {
+export function useActiveFormStore(storeType: StoreTypes): StatDataState {
 
-    const skillsStore = useSkills() as ProfileDataState;
-    const EquipmentStore = useEquipment() as ProfileDataState;
-    const WeaponsStore = useWeapons() as ProfileDataState;
-    const StatsStore = useStats() as ProfileDataState;
+    const skillsStore = useSkills() as StatDataState;
+    const EquipmentStore = useEquipment() as StatDataState;
+    const WeaponsStore = useWeapons() as StatDataState;
+    const StatsStore = useStats() as StatDataState;
 
     let returnStore = null
 
