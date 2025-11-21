@@ -14,9 +14,10 @@ export function GuessButton(): React.JSX.Element {
 
     const stateLoadingStore: ConexionStatusState = useConexionStatusNameList();
     const isStatsDataConnected: boolean = useCheckNamesData();
+    const funcResetFormStores = useResetFormStores();
 
     const funcLoadStores: () => void = () => {
-        if (!isStatsDataConnected) { stateLoadingStore.updateLoadingStatus("sending"); }
+        if (!isStatsDataConnected) { funcResetFormStores(); stateLoadingStore.updateLoadingStatus("sending"); }
     };
 
     return <div className="hint-button">
