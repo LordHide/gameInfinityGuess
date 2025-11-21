@@ -1,12 +1,6 @@
 import { create } from 'zustand';
 
-
-export interface PlayerStatsState {
-    health: number
-    accuracy: number
-    updateHealth: (newHealth: number) => void
-    updateAccuracy: (newAccuracy: number) => void
-}
+import { type PlayerStatsState } from '../../types/typesStore';
 
 export const usePlayerStats = create<PlayerStatsState>((set) => ({
     health: 3,

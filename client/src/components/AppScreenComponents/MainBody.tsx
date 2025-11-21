@@ -1,6 +1,6 @@
 
 import GameUI from "./GameUI";
-import HintButton from "./HintButton";
+import HintButton from "../HintComponents/HintButton";
 import GuessButton from "./GuessButton";
 import UnitCard from "../UnitCardComponents/UnitCard";
 

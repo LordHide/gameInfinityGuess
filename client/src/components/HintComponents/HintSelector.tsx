@@ -6,7 +6,7 @@ export function HintSelector(state: { currentStore: StatDataState }): React.JSX.
 
     const { contains } = useFilter({ sensitivity: "base" })
 
-    const activeOptions = state.currentStore.values;
+    const activeOptions: StatColectionValues[] = state.currentStore.values;
 
     const { collection, filter } = useListCollection({
         initialItems: activeOptions,
@@ -23,6 +23,7 @@ export function HintSelector(state: { currentStore: StatDataState }): React.JSX.
             state.currentStore.updateSelectedValue(selectedItem);
         }}
         width="22vw"
+        openOnClick
     >
         <Combobox.Control>
             <Combobox.Input placeholder="Type to search" />

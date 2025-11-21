@@ -26,9 +26,14 @@ export interface TextOptionsValues {
     value: string
 }
 
-export interface ConexionStatusState {
+export interface ConexionStatusColectionState {
     LoadingStatus: LoadingStatusColection
     updateLoadingStatus: (newLoadingStatus: LoadingStatusColection) => void
+}
+
+export interface ConexionStatusState {
+    LoadingStatus: LoadingState
+    updateLoadingStatus: (newLoadingStatus: LoadingState) => void
 }
 
 export interface LoadingStatusColection {
@@ -90,4 +95,11 @@ export interface ProfileState {
     updateEquipment: (newEquipment: string[]) => void
     updateSkills: (newSkills: string[]) => void
     updateLoadout: () => void
+}
+
+export interface PlayerStatsState {
+    health: number
+    accuracy: number
+    updateHealth: (newHealth: number) => void
+    updateAccuracy: (newAccuracy: number) => void
 }

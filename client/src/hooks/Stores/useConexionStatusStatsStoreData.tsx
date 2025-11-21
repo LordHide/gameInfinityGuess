@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { type ConexionStatusState, type LoadingStatusColection } from '../../types/typesStore'
+import { type ConexionStatusColectionState, type LoadingStatusColection } from '../../types/typesStore'
 
 const baseLoadingStatus: LoadingStatusColection = {
     stats: "pending",
@@ -10,7 +10,7 @@ const baseLoadingStatus: LoadingStatusColection = {
     others: "pending",
 }
 
-export const useConexionStatusStatsStoreData = create<ConexionStatusState>((set) => ({
+export const useConexionStatusStatsStoreData = create<ConexionStatusColectionState>((set) => ({
     LoadingStatus: baseLoadingStatus,
     updateLoadingStatus: (newLoadingStatus: LoadingStatusColection) => set({ LoadingStatus: newLoadingStatus }),
 }))

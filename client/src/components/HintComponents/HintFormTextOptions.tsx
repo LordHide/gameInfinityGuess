@@ -19,6 +19,7 @@ export function HintFormTextOptions(values: { currentStore: StatDataState, textO
                 values.currentStore.updateAplyedExtraValue(selectedItem.label);
             }}
             width="25vw"
+            openOnClick
         >
             <Combobox.Control>
                 <Combobox.Input placeholder="Type to search" />

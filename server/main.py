@@ -151,11 +151,21 @@ def get_profile_data():
     return {
         "data": [
             "Antipode Assault Pack Handler",
-            "Acontecimento Regulars",
-            "Blue Wolf Mongol Cavalry"
-            "Daylami",
-            "Eudoros",
-            "Fusiliers",
-            "'Gator' Squadron"
-            ], 
+            "",
+            ""
+            "",
+            "",
+            "",
+            ],
+        "data":[
+                    { "label": "'Gator' Squadron", "value": "'Gator' Squadron", "extravalueType": "Text Options" },
+                    { "label": "Fusiliers", "value": "Fusiliers", "extravalueType": "Text Options" },
+                    { "label": "Eudoros", "value": "Eudoros", "extravalueType": "Text Options" },
+                    { "label": "Daylami", "value": "Daylami", "extravalueType": "Text Options" },
+                    { "label": "Blue Wolf Mongol Cavalry", "value": "Blue Wolf Mongol Cavalry", "extravalueType": "Text Options" },
+                    { "label": "Acontecimento Regulars", "value": "Acontecimento Regulars", "extravalueType": "Text Options" },
+                    { "label": "Antipode Assault Pack Handler", "value": "Antipode Assault Pack Handler", "extravalueType": "Text Options" },
+                    { "label": "Nexus Operatives", "value": "Nexus Operatives", "extravalueType": "Text Options" },
+                    { "label": "StormBots", "value": "StormBots", "extravalueType": "Text Options" },
+                ],
         "success": 1}

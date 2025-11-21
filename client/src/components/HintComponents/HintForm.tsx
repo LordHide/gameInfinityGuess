@@ -1,4 +1,4 @@
-import { type TextOptionsValues, type StatDataState, type StoreTypes } from '../../types/typesStore.tsx';
+import { type TextOptionsValues, type StatDataState, type StoreTypes, type ConexionStatusColectionState, type ExtraValueTypes, type LoadingState } from '../../types/typesStore.tsx';
 
 import { Spinner, Button, Center } from "@chakra-ui/react";
 
@@ -15,12 +15,12 @@ import { useConexionStatusStatsStoreData } from '../../hooks/Stores/useConexionS
 
 export function HintForm(state: { typeStore: StoreTypes }): React.JSX.Element {
 
-    const conexionStatusStore = useConexionStatusStatsStoreData();
+    const conexionStatusStore: ConexionStatusColectionState = useConexionStatusStatsStoreData();
     const activeStore: StatDataState = useActiveFormStore(state.typeStore);
-    const extraValueType = activeStore?.selectedValue?.extraValueType ?? "None";
-    const textOptions = activeStore?.selectedValue?.textOptions ?? [] as TextOptionsValues[];
-    const conexionStatus = conexionStatusStore.LoadingStatus[state.typeStore];
-    const checkValueProfileFunction = useCheckValueProfile(state.typeStore);
+    const extraValueType: ExtraValueTypes = activeStore?.selectedValue?.extraValueType ?? "None";
+    const textOptions: TextOptionsValues[] = activeStore?.selectedValue?.textOptions ?? [] as TextOptionsValues[];
+    const conexionStatus: LoadingState = conexionStatusStore.LoadingStatus[state.typeStore];
+    const functCheckValueProfile: () => void = useCheckValueProfile(state.typeStore);
 
     useLoadStatsStoreData(state.typeStore);
 
@@ -34,7 +34,7 @@ export function HintForm(state: { typeStore: StoreTypes }): React.JSX.Element {
             {conexionStatus !== "pending" && <Spinner size="sm" />}
         </div>
         <Center marginTop="2vh" >
-            <Button variant="surface" onClick={checkValueProfileFunction}>Ask</Button>
+            <Button variant="surface" onClick={functCheckValueProfile}>Ask</Button>
         </Center>
     </>;
 }
