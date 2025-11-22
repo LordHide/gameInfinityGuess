@@ -1,7 +1,7 @@
 
 import '../../css/App.css'
 
-
+import { type ConexionStatusState, type LoadingState } from '../../types/typesStore.tsx';
 
 import { useLoadProfileData } from '../../hooks/useLoadProfileData.tsx';
 
@@ -15,8 +15,8 @@ import GameSelector from '../AppScreenComponents/GameSelector.tsx';
 function AppScreen() {
 
     const gameModeStore: GameModeState = useGameMode();
-    const stateLoadingStore = useConexionStatusProfileData();
-    const stateLoading = stateLoadingStore.LoadingStatus;
+    const stateLoadingStore: ConexionStatusState = useConexionStatusProfileData();
+    const stateLoading: LoadingState = stateLoadingStore.LoadingStatus;
 
 
     useLoadProfileData()

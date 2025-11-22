@@ -18,7 +18,7 @@ export function useCheckValueName(): () => void {
     const aplyedExtraValue: string = nameListStore.selectedValue?.value as string;
 
     const functCheckStats: () => void = () => {
-        if (profileStore.name != aplyedExtraValue) {
+        if (aplyedExtraValue !== undefined && profileStore.name != aplyedExtraValue) {
             const currentHealth: number = playerStatsStore.health;
             const currentAccuracy: number = playerStatsStore.accuracy;
             if (currentHealth > 0)
@@ -52,6 +52,7 @@ export function useCheckValueName(): () => void {
             dicoveredStore.updateEquipment(fullEquipments);
             loadoutDataStore.updateLoadout(updatedLoadout);
             dicoveredStore.updateName(aplyedExtraValue as string);
+            document.dispatchEvent(new KeyboardEvent('keypress', { 'key': 'Escape', 'shiftKey': true }));
         }
     }
 

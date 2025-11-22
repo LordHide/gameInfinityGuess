@@ -3,14 +3,16 @@ import heart from '../../assets/Heart.png';
 import crosshair from '../../assets/Crosshair.png';
 import '../../css/AppScreenComponents/GameUI.css';
 
-import { type PlayerStatsState, usePlayerStats } from '../../hooks/Stores/usePlayerStats.tsx';
+import { type PlayerStatsState } from '../../types/typesStore.tsx';
+
+import { usePlayerStats } from '../../hooks/Stores/usePlayerStats.tsx';
 
 export function GameUI(): React.JSX.Element {
 
     const playerStatsStore: PlayerStatsState = usePlayerStats();
     const arrayHealth: number[] = new Array(playerStatsStore.health);
     arrayHealth.fill(1)
-    let valor = 0;
+    let valor: number = 0;
 
     return <div className="gameUI">
         <div className="gameUI-health" title='test'>

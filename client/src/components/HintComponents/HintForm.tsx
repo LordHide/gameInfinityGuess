@@ -1,7 +1,8 @@
 import { type TextOptionsValues, type StatDataState, type StoreTypes, type ConexionStatusColectionState, type ExtraValueTypes, type LoadingState } from '../../types/typesStore.tsx';
 
-import { Spinner, Button, Center } from "@chakra-ui/react";
+import { Spinner, Button, Center, Dialog } from "@chakra-ui/react";
 
+import { useJSONEmpty } from '../../hooks/useJSONEmpty.tsx';
 import { useActiveFormStore } from '../../hooks/useActiveFormStore.tsx';
 import { useCheckValueProfile } from '../../hooks/useCheckValueProfile.tsx';
 import { useLoadStatsStoreData } from '../../hooks/useLoadStatsStoreData.tsx';
@@ -21,6 +22,7 @@ export function HintForm(state: { typeStore: StoreTypes }): React.JSX.Element {
     const textOptions: TextOptionsValues[] = activeStore?.selectedValue?.textOptions ?? [] as TextOptionsValues[];
     const conexionStatus: LoadingState = conexionStatusStore.LoadingStatus[state.typeStore];
     const functCheckValueProfile: () => void = useCheckValueProfile(state.typeStore);
+    const dissabledButton: boolean = useJSONEmpty(activeStore.selectedValue);
 
     useLoadStatsStoreData(state.typeStore);
 
@@ -34,7 +36,9 @@ export function HintForm(state: { typeStore: StoreTypes }): React.JSX.Element {
             {conexionStatus !== "pending" && <Spinner size="sm" />}
         </div>
         <Center marginTop="2vh" >
-            <Button variant="surface" onClick={functCheckValueProfile}>Ask</Button>
+            <Dialog.ActionTrigger asChild>
+                <Button variant="surface" disabled={dissabledButton} onClick={functCheckValueProfile}>Ask</Button>
+            </Dialog.ActionTrigger>
         </Center>
     </>;
 }

@@ -8,12 +8,12 @@ import { useConexionStatusStatsStoreData } from '../../hooks/Stores/useConexionS
 import { useCheckStasData } from '../../hooks/useCheckStasData.tsx';
 import { useResetFormStores } from '../../hooks/useResetFormStores.tsx';
 
-import { type LoadingStatusColection } from '../../types/typesStore.tsx';
+import { type LoadingStatusColection, type ConexionStatusColectionState } from '../../types/typesStore.tsx';
 
 
 export function HintButton(): React.JSX.Element {
 
-    const stateLoadingStore = useConexionStatusStatsStoreData();
+    const stateLoadingStore: ConexionStatusColectionState = useConexionStatusStatsStoreData();
     const isStatsDataConnected: boolean = useCheckStasData();
     const sendLoadingStatus: LoadingStatusColection = {
         stats: "sending",

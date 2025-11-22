@@ -1,11 +1,6 @@
 import { create } from 'zustand';
 
-type LoadingState = "sending" | "loading" | "pending" | "error";
-
-export interface ConexionStatusState {
-    LoadingStatus: LoadingState
-    updateLoadingStatus: (newLoadingStatus: LoadingState) => void
-}
+import { type LoadingState, type ConexionStatusState } from '../../types/typesStore'
 
 export const useConexionStatusProfileData = create<ConexionStatusState>((set) => ({
     LoadingStatus: "pending",

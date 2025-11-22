@@ -1,19 +1,26 @@
-import { type ConexionStatusState } from '../../types/typesStore.tsx';
+import { type ConexionStatusState, type LoadingState } from '../../types/typesStore.tsx';
 
-import { Spinner, Button, Center } from "@chakra-ui/react";
+import { Spinner, Button, Center, Dialog } from "@chakra-ui/react";
+
+import { Tooltip } from "../ui/tooltip"
 
 import { useLoadNamesList } from '../../hooks/useLoadNamesList.tsx';
 import { useCheckValueName } from '../../hooks/useCheckValueName.tsx';
+import { useJSONEmpty } from '../../hooks/useJSONEmpty.tsx';
 
 import { useConexionStatusNameList } from '../../hooks/Stores/useConexionStatusNameList.tsx';
+import { useNameList } from "../../hooks/Stores/useNameList.tsx";
 
 import { GuessSelector } from "./GuessSelector.tsx";
 
 export function GuessForm(): React.JSX.Element {
 
     const conexionStatusStore: ConexionStatusState = useConexionStatusNameList();
-    const conexionStatus = conexionStatusStore.LoadingStatus;
-    const functCheckName = useCheckValueName();
+    const conexionStatus: LoadingState = conexionStatusStore.LoadingStatus;
+    const functCheckName: () => void = useCheckValueName();
+    const dissabledButton: boolean = useJSONEmpty(useNameList().selectedValue);
+    const toolTipoMessage: string = conexionStatus !== "pending" ? "Loading names..." : "Guess the profiles name";
+
 
     useLoadNamesList();
 
@@ -24,7 +31,11 @@ export function GuessForm(): React.JSX.Element {
             {conexionStatus !== "pending" && <Spinner size="sm" />}
         </div>
         <Center marginTop="2vh" >
-            <Button variant="surface" onClick={functCheckName}>Guess</Button>
+            <Dialog.ActionTrigger asChild>
+                <Tooltip content={toolTipoMessage} >
+                    <Button disabled={dissabledButton} variant="surface" onClick={functCheckName}>Guess</Button>
+                </Tooltip>
+            </Dialog.ActionTrigger>
         </Center>
     </>;
 }

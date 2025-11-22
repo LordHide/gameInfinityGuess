@@ -20,7 +20,7 @@ export function useCheckValueProfile(typeStore: StoreTypes): () => void {
     const functCheckStats = () => {
         const activeStat: StatsMap = dicoveredStore.stats;
         let successUpdate: boolean = false;
-        if (profileStore.stats[selectedValue as keyof Stats] == aplyedExtraValue) {
+        if (aplyedExtraValue !== undefined && profileStore.stats[selectedValue as keyof Stats] == aplyedExtraValue) {
             activeStat.set(selectedValue as keyof Stats, aplyedExtraValue as string);
             successUpdate = true;
         }
