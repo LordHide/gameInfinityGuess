@@ -3,14 +3,14 @@ import { Dialog, Button, CloseButton, Portal } from "@chakra-ui/react"
 
 import { GuessForm } from "./GuessForm"
 
-import { type ConexionStatusState } from '../../types/typesStore.tsx';
+import { type ConexionStatusState } from '@local-types/typesStore.tsx';
 
-import { useConexionStatusNameList } from '../../hooks/Stores/useConexionStatusNameList.tsx';
+import { useConexionStatusNameList } from '@Stores/useConexionStatusNameList.tsx';
 
-import { useCheckNamesData } from '../../hooks/useCheckNamesData.tsx';
-import { useResetFormStores } from '../../hooks/useResetFormStores.tsx';
+import { useCheckNamesData } from '@hooks/useCheckNamesData.tsx';
+import { useResetFormStores } from '@hooks/useResetFormStores.tsx';
 
-export function GuessButton(): React.JSX.Element {
+export function GuessDialog(): React.JSX.Element {
 
     const stateLoadingStore: ConexionStatusState = useConexionStatusNameList();
     const isStatsDataConnected: boolean = useCheckNamesData();
@@ -32,6 +32,9 @@ export function GuessButton(): React.JSX.Element {
                 <Dialog.Backdrop />
                 <Dialog.Positioner>
                     <Dialog.Content>
+                        <Dialog.Header>
+                            <Dialog.Title as="h2">Guess the profile</Dialog.Title>
+                        </Dialog.Header>
                         <Dialog.Body>
                             <GuessForm />
                         </Dialog.Body>
@@ -45,4 +48,4 @@ export function GuessButton(): React.JSX.Element {
     </div>;
 }
 
-export default GuessButton
+export default GuessDialog;

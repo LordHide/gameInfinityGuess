@@ -1,9 +1,9 @@
-import { type StatDataState, type StoreTypes, type Stats, type StatsMap, type LoadoutState, type AplyedValue, type ProfileDataState, type ProfileState, type PlayerStatsState } from '../types/typesStore.tsx'
+import { type StatDataState, type OptionStatus, type StoreTypes, type Stats, type StatsMap, type LoadoutState, type AplyedValue, type ProfileDataState, type ProfileState, type PlayerStatsState } from '@local-types/typesStore.tsx'
 import { useActiveFormStore } from './useActiveFormStore.tsx';
-import { useProfileData } from './Stores/useProfileData.tsx';
-import { useDiscoveredData } from './Stores/useDiscoveredData.tsx';
-import { useLoadout } from './Stores/useLoadout.tsx';
-import { usePlayerStats } from './Stores/usePlayerStats.tsx';
+import { useProfileData } from '@Stores/useProfileData.tsx';
+import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
+import { useLoadout } from '@Stores/useLoadout.tsx';
+import { usePlayerStats } from '@Stores/usePlayerStats.tsx';
 
 
 export function useCheckValueProfile(typeStore: StoreTypes): () => void {
@@ -19,11 +19,28 @@ export function useCheckValueProfile(typeStore: StoreTypes): () => void {
 
     const functCheckStats = () => {
         const activeStat: StatsMap = dicoveredStore.stats;
+        const statSelected: OptionStatus = profileStore.stats[selectedValue as keyof Stats];
         let successUpdate: boolean = false;
-        if (aplyedExtraValue !== undefined && profileStore.stats[selectedValue as keyof Stats] == aplyedExtraValue) {
-            activeStat.set(selectedValue as keyof Stats, aplyedExtraValue as string);
+        if (aplyedExtraValue === undefined) {
+            return;
+        }
+        if (statSelected.value == aplyedExtraValue) {
+            statSelected.value = aplyedExtraValue;
+            statSelected.status = "";
+            activeStat.set(selectedValue as keyof Stats, statSelected as OptionStatus);
             successUpdate = true;
         }
+        else {
+            const selectedValueArray: string[] = selectedValue?.split("-") ?? [];
+            aplyedExtraValue.split("-").forEach((currentValue, index) => {
+                if (Number(selectedValueArray[index]) >= Number(currentValue) && Number(selectedValueArray[index]) - 5 <= Number(currentValue)) {
+                    statSelected.status = "-";
+                    activeStat.set(selectedValue as keyof Stats, statSelected as OptionStatus);
+                    successUpdate = true;
+                }
+            });
+        }
+
         dicoveredStore.updateStats(activeStat);
 
         if (!successUpdate) {
@@ -34,17 +51,17 @@ export function useCheckValueProfile(typeStore: StoreTypes): () => void {
     }
 
     const functCheckSkills = () => {
-        const activeSkill: string[] = dicoveredStore.skills;
+        const activeSkill: OptionStatus[] = dicoveredStore.skills;
         let selectedSkill: string = selectedValue as string;
         let successUpdate: boolean = false;
 
         if (aplyedExtraValue !== undefined)
             selectedSkill += " (" + aplyedExtraValue + ")"
 
-        const skillPosition: number = profileStore.skills.indexOf(selectedSkill)
+        const skillPosition: number = profileStore.skills.indexOf({ value: selectedSkill, status: "" })
 
         if (skillPosition !== -1) {
-            activeSkill[skillPosition] = selectedSkill
+            activeSkill[skillPosition] = { value: selectedSkill, status: "" }
             successUpdate = true;
         }
         else {
@@ -72,17 +89,17 @@ export function useCheckValueProfile(typeStore: StoreTypes): () => void {
     }
 
     const functCheckEquipments = () => {
-        const activeEquipments: string[] = dicoveredStore.equipments;
+        const activeEquipments: OptionStatus[] = dicoveredStore.equipments;
         let selectedEquipments: string = selectedValue as string;
         let successUpdate: boolean = false;
 
         if (aplyedExtraValue !== undefined)
             selectedEquipments += " (" + aplyedExtraValue + ")"
 
-        const equipmentsPosition: number = profileStore.equipments.indexOf(selectedEquipments)
+        const equipmentsPosition: number = profileStore.equipments.indexOf({ value: selectedEquipments, status: "" })
 
         if (equipmentsPosition !== -1) {
-            activeEquipments[equipmentsPosition] = selectedEquipments
+            activeEquipments[equipmentsPosition] = { value: selectedEquipments, status: "" }
             successUpdate = true;
         }
         else {

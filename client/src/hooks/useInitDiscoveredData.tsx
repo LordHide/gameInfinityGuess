@@ -1,6 +1,8 @@
 import { type DiscoveredData, type ProfileData, useAnonymizeProfileData } from './useAnonymizeProfileData.tsx';
-import { type ProfileState, useDiscoveredData } from './Stores/useDiscoveredData.tsx';
-import { type LoadoutState, useLoadout } from './Stores/useLoadout.tsx';
+import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
+import { useLoadout } from '@Stores/useLoadout.tsx';
+
+import { type ProfileState, type LoadoutState } from '@local-types/typesStore.tsx'
 
 export function useInitDiscoveredData(): (jsonData: ProfileData) => void {
 

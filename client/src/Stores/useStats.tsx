@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { type StatDataState, type StatColectionValues, type AplyedValue } from '../../types/typesStore'
+import { type StatDataState, type StatColectionValues, type AplyedValue } from '@local-types/typesStore'
 
 export const useStats = create<StatDataState>((set) => ({
     values: [],

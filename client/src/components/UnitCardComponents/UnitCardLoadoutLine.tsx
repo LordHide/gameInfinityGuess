@@ -1,4 +1,4 @@
-import '../../css/UnitCardComponents/UnitCardLoadout.css';
+import '@css/UnitCardComponents/UnitCardLoadout.css';
 
 interface UnitCardLoadoutLineProps {
     loadoutMap: Map<string, string[]>;

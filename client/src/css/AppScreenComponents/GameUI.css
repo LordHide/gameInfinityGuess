@@ -5,12 +5,12 @@
 
 .player-section div {
     height: 100%;
-    width: 33%;
+    width: 36%;
     display: flex;
 }
 
 .player-buttons {
-    padding-left: 5%;
+    /* padding-left: 5%; */
 }
 
 .gameUI {

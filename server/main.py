@@ -33,7 +33,35 @@ def get_profile_data():
             "name": "Fusiliers", 
             "equipments": [], 
             "skills": [], 
-            "stats":{"MOV": "4-4", "CC": 13, "BS": 12, "PH": 10, "WIP": 12, "ARM": 1, "BTS": 0, "VITA": 1, "S": 2},
+            "stats":{
+                "MOV": {
+                    "value":"4-4", "status": ""
+                }, 
+                "CC": {
+                    "value":"13", "status": ""
+                }, 
+                "BS": {
+                    "value":"12", "status": ""
+                }, 
+                "PH": {
+                    "value":"10", "status": ""
+                }, 
+                "WIP": {
+                    "value":"12", "status": ""
+                }, 
+                "ARM": {
+                    "value":"1", "status": ""
+                }, 
+                "BTS": {
+                    "value":"0", "status": ""
+                }, 
+                "VITA": {
+                    "value":"1", "status": ""
+                }, 
+                "S": {
+                    "value":"2", "status": ""
+                }
+            },
             "loadouts": [
                 { "skills":[], "equipments":[], "Range_Weapons": ["Combi Rifle"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},
                 { "skills":[], "equipments":[], "Range_Weapons": ["Heavy Machine Gun"], "Melee_Weapons": ["Pistol", "CC Weapon" ]},

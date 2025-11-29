@@ -1,6 +1,6 @@
 import { NumberInput } from "@chakra-ui/react";
 
-import { type StatDataState, type TextOptionsValues } from '../../types/typesStore'
+import { type StatDataState, type TextOptionsValues } from '@local-types/typesStore'
 
 export function HintFormSingleNumber(state: { currentStore: StatDataState, textOptions: TextOptionsValues[] }): React.JSX.Element {
 
@@ -10,7 +10,7 @@ export function HintFormSingleNumber(state: { currentStore: StatDataState, textO
     return <>
         <NumberInput.Root
             onValueChange={(details) => {
-                const selectedItem: number = details?.valueAsNumber ?? 0;
+                const selectedItem: string = details?.value ?? "0";
 
                 state.currentStore.updateAplyedExtraValue(selectedItem);
             }}

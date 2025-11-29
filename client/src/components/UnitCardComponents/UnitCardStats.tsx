@@ -1,11 +1,13 @@
-import { type Stats, type ProfileState, useDiscoveredData } from '../../hooks/Stores/useDiscoveredData.tsx';
+import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
+
+import { type ProfileState, type StatsMap } from '@/types/typesStore';
 
 
-import '../../css/UnitCardComponents/UnitCardStats.css';
+import '@css/UnitCardComponents/UnitCardStats.css';
 
 export function UnitCardStats() {
     const discoveredDataStore: ProfileState = useDiscoveredData();
-    const statsMap: Stats = discoveredDataStore.stats;
+    const statsMap: StatsMap = discoveredDataStore.stats;
     const labels: string[] = statsMap ? Array.from(statsMap.keys()) : [];
 
     return <>
@@ -14,7 +16,7 @@ export function UnitCardStats() {
                 <div key={index}>{label}</div>
             ))}
             {labels.map((label, index) => (
-                <div key={index}>{statsMap.get(label)}</div>
+                <div key={index}>{(statsMap.get(label)?.status ?? "") + statsMap.get(label)?.value}</div>
             ))}
         </div>
     </>;

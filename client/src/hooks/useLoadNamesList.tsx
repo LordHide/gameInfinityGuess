@@ -1,7 +1,7 @@
-import { useNameList } from './Stores/useNameList.tsx';
-import { useConexionStatusNameList } from './Stores/useConexionStatusNameList.tsx';
+import { useNameList } from '@Stores/useNameList.tsx';
+import { useConexionStatusNameList } from '@Stores/useConexionStatusNameList.tsx';
 
-import { type LoadingState, type ConexionStatusState } from '../types/typesStore.tsx'
+import { type LoadingState, type ConexionStatusState } from '@local-types/typesStore.tsx'
 
 import { useState, useEffect } from 'react'
 

@@ -1,6 +1,6 @@
 import { Combobox, useFilter, useListCollection } from "@chakra-ui/react";
 
-import { type StatColectionValues, type StatDataState } from '../../types/typesStore.tsx';
+import { type StatColectionValues, type StatDataState, type TextOptionsValues } from '@local-types/typesStore.tsx';
 
 export function HintSelector(state: { currentStore: StatDataState }): React.JSX.Element {
 
@@ -21,6 +21,10 @@ export function HintSelector(state: { currentStore: StatDataState }): React.JSX.
         onValueChange={(details) => {
             const selectedItem: StatColectionValues = details.items[0] as StatColectionValues;
             state.currentStore.updateSelectedValue(selectedItem);
+            if (selectedItem !== undefined) {
+                const selectedOotions = selectedItem.textOptions as TextOptionsValues[];
+                state.currentStore.updateAplyedExtraValue(selectedOotions[0].value);
+            }
         }}
         width="22vw"
         openOnClick

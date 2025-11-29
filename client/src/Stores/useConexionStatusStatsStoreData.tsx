@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { type ConexionStatusColectionState, type LoadingStatusColection } from '../../types/typesStore'
+import { type ConexionStatusColectionState, type LoadingStatusColection } from '@local-types/typesStore'
 
 const baseLoadingStatus: LoadingStatusColection = {
     stats: "pending",

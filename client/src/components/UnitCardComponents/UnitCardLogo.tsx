@@ -1,6 +1,6 @@
-import '../../css/UnitCardComponents/UnitCard.css';
+import '@css/UnitCardComponents/UnitCard.css';
 
-import defaultIcon from '../../assets/default-icon.svg';
+import defaultIcon from '@assets/default-icon.svg';
 
 export function UnitCardLogo(): React.JSX.Element {
     return <div className="unit-card-logo">

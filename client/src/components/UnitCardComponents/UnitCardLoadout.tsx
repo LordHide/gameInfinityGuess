@@ -1,8 +1,8 @@
-import { useLoadout } from '../../hooks/Stores/useLoadout.tsx';
+import { useLoadout } from '@Stores/useLoadout.tsx';
 
-import '../../css/UnitCardComponents/UnitCard.css';
+import '@css/UnitCardComponents/UnitCard.css';
 
-import { type LoadoutState } from '../../types/typesStore';
+import { type LoadoutState } from '@local-types/typesStore';
 
 import UnitCardLoadoutLine from './UnitCardLoadoutLine.tsx';
 

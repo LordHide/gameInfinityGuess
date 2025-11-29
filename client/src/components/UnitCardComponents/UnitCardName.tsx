@@ -1,6 +1,8 @@
-import { type ProfileState, useDiscoveredData } from '../../hooks/Stores/useDiscoveredData.tsx';
+import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
 
-import '../../css/UnitCardComponents/UnitCardName.css';
+import { type ProfileState } from '@local-types/typesStore';
+
+import '@css/UnitCardComponents/UnitCardName.css';
 
 
 export function UnitCardName(): React.JSX.Element {

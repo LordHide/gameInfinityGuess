@@ -1,5 +1,5 @@
 import { Combobox, useFilter, useListCollection } from "@chakra-ui/react";
-import { type TextOptionsValues, type StatDataState } from '../../types/typesStore'
+import { type TextOptionsValues, type StatDataState } from '@local-types/typesStore'
 
 export function HintFormTextOptions(values: { currentStore: StatDataState, textOptions: TextOptionsValues[] }): React.JSX.Element {
 

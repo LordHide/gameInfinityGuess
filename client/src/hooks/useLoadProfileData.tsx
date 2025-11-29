@@ -1,6 +1,6 @@
 import { useInitProfileData } from './useInitProfileData.tsx';
 import { useInitDiscoveredData } from './useInitDiscoveredData.tsx';
-import { useConexionStatusProfileData } from './Stores/useConexionStatusProfileData.tsx';
+import { useConexionStatusProfileData } from '@Stores/useConexionStatusProfileData.tsx';
 
 import { useState, useEffect } from 'react'
 

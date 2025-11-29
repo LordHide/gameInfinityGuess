@@ -1,9 +1,9 @@
 import { useActiveFormStore } from './useActiveFormStore.tsx';
-import { useConexionStatusStatsStoreData } from './Stores/useConexionStatusStatsStoreData.tsx';
+import { useConexionStatusStatsStoreData } from '@Stores/useConexionStatusStatsStoreData.tsx';
 
 import { useState, useEffect } from 'react'
 
-import { type StoreTypes } from '../types/typesStore'
+import { type StoreTypes } from '@local-types/typesStore'
 
 export function useLoadStatsStoreData(typeStatsStoreData: StoreTypes,): void {
 

@@ -1,9 +1,9 @@
-import { useSkills } from './Stores/useSkills.tsx';
-import { useStats } from './Stores/useStats.tsx';
-import { useEquipment } from './Stores/useEquipment.tsx';
-import { useWeapons } from './Stores/useWeapons.tsx';
+import { useSkills } from '@Stores/useSkills.tsx';
+import { useStats } from '@Stores/useStats.tsx';
+import { useEquipment } from '@Stores/useEquipment.tsx';
+import { useWeapons } from '@Stores/useWeapons.tsx';
 
-import { type StatDataState, type StoreTypes } from '../types/typesStore'
+import { type StatDataState, type StoreTypes } from '@local-types/typesStore'
 
 export function useActiveFormStore(storeType: StoreTypes): StatDataState {
 

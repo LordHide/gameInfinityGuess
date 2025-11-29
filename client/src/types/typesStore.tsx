@@ -6,7 +6,7 @@ export type ExtraValueTypes =
 export type StoreTypes = "skills" | "equipments" | "weapons" | "stats";
 export type LoadingState = "sending" | "loading" | "pending" | "error";
 export type statusPlayer = "active" | "defeated" | "win";
-export type AplyedValue = number | string | undefined;
+export type AplyedValue = string | undefined;
 
 export interface StatDataState {
   values: StatColectionValues[];
@@ -51,13 +51,13 @@ export interface LoadingStatusColection {
 export interface ProfileDataState {
   name: string;
   stats: Stats;
-  equipments: string[];
-  skills: string[];
+  equipments: OptionStatus[];
+  skills: OptionStatus[];
   loadout: Loadout[];
   updateName: (newName: string) => void;
   updateStats: (newStats: Stats) => void;
-  updateEquipment: (newEquipment: string[]) => void;
-  updateSkills: (newSkills: string[]) => void;
+  updateEquipment: (newEquipment: OptionStatus[]) => void;
+  updateSkills: (newSkills: OptionStatus[]) => void;
   updateLoadout: (newLoadout: Loadout[]) => void;
 }
 
@@ -74,35 +74,41 @@ export interface LoadoutState {
 }
 
 export interface Stats {
-  Mov?: string;
-  CC?: number;
-  BS?: number;
-  PH?: number;
-  WIP?: number;
-  ARM?: number;
-  BTS?: number;
-  VITA?: number;
-  S?: number;
+  Mov: OptionStatus;
+  CC: OptionStatus;
+  BS: OptionStatus;
+  PH: OptionStatus;
+  WIP: OptionStatus;
+  ARM: OptionStatus;
+  BTS: OptionStatus;
+  VITA: OptionStatus;
+  S: OptionStatus;
 }
 
 export type Profile = Map<
   string,
   string | Map<string, string | number> | string[]
 >;
-export type StatsMap = Map<string, string>;
+export type StatsMap = Map<string, OptionStatus>;
 
 export interface ProfileState {
   name: string;
   stats: StatsMap;
-  equipments: string[];
-  skills: string[];
+  equipments: OptionStatus[];
+  skills: OptionStatus[];
   loadout: LoadoutState;
   updateName: (newName: string) => void;
   updateStats: (newStats: StatsMap) => void;
-  updateEquipment: (newEquipment: string[]) => void;
-  updateSkills: (newSkills: string[]) => void;
+  updateEquipment: (newEquipment: OptionStatus[]) => void;
+  updateSkills: (newSkills: OptionStatus[]) => void;
   updateLoadout: () => void;
 }
+
+export interface OptionStatus {
+  value: string;
+  status: "+" | "++" | "-" | "--" | "";
+}
+
 
 export interface PlayerStatsState {
   health: number;
@@ -111,5 +117,8 @@ export interface PlayerStatsState {
   updateHealth: (newHealth: number) => void;
   updateAccuracy: (newAccuracy: number) => void;
   updateStatus: (newStatus: statusPlayer) => void;
+  loseHealth: (amount: number) => void;
+  gainHealth: (amount: number) => void;
+  checkPlayerIsDead: () => void;
   resetStats: () => void;
 }

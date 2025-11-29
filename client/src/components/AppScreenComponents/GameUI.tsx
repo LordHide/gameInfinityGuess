@@ -1,11 +1,11 @@
-import heart from '../../assets/Heart.png';
-// import accuracy from '../../assets/accuracy.svg';
-import crosshair from '../../assets/Crosshair.png';
-import '../../css/AppScreenComponents/GameUI.css';
+import heart from '@assets/Heart.png';
+// import accuracy from '@assets/accuracy.svg';
+import crosshair from '@assets/Crosshair.png';
+import '@css/AppScreenComponents/GameUI.css';
 
-import { type PlayerStatsState } from '../../types/typesStore.tsx';
+import { type PlayerStatsState } from '@local-types/typesStore.tsx';
 
-import { usePlayerStats } from '../../hooks/Stores/usePlayerStats.tsx';
+import { usePlayerStats } from '@Stores/usePlayerStats.tsx';
 
 export function GameUI(): React.JSX.Element {
 

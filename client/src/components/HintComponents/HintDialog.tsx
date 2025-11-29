@@ -3,15 +3,15 @@ import { Dialog, Button, CloseButton, Portal } from "@chakra-ui/react"
 
 import HintTabs from './HintTabs.tsx';
 
-import { useConexionStatusStatsStoreData } from '../../hooks/Stores/useConexionStatusStatsStoreData.tsx';
+import { useConexionStatusStatsStoreData } from '@Stores/useConexionStatusStatsStoreData.tsx';
 
-import { useCheckStasData } from '../../hooks/useCheckStasData.tsx';
-import { useResetFormStores } from '../../hooks/useResetFormStores.tsx';
+import { useCheckStasData } from '@hooks/useCheckStasData.tsx';
+import { useResetFormStores } from '@hooks/useResetFormStores.tsx';
 
-import { type LoadingStatusColection, type ConexionStatusColectionState } from '../../types/typesStore.tsx';
+import { type LoadingStatusColection, type ConexionStatusColectionState } from '@local-types/typesStore.tsx';
 
 
-export function HintButton(): React.JSX.Element {
+export function HintDialog(): React.JSX.Element {
 
     const stateLoadingStore: ConexionStatusColectionState = useConexionStatusStatsStoreData();
     const isStatsDataConnected: boolean = useCheckStasData();
@@ -39,6 +39,9 @@ export function HintButton(): React.JSX.Element {
                 <Dialog.Backdrop />
                 <Dialog.Positioner>
                     <Dialog.Content>
+                        <Dialog.Header>
+                            <Dialog.Title as="h2">Select a hint category</Dialog.Title>
+                        </Dialog.Header>
                         <Dialog.Body>
                             <HintTabs />
                         </Dialog.Body>
@@ -52,4 +55,4 @@ export function HintButton(): React.JSX.Element {
     </div>;
 }
 
-export default HintButton
+export default HintDialog;

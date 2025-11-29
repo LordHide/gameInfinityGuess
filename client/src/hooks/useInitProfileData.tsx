@@ -1,5 +1,7 @@
-import { type ProfileDataState, useProfileData } from './Stores/useProfileData.tsx';
+import { useProfileData } from '@Stores/useProfileData.tsx';
 import { type ProfileData } from './useAnonymizeProfileData.tsx';
+
+import { type ProfileDataState } from '@local-types/typesStore.tsx'
 
 export function useInitProfileData(): (jsonData: ProfileData) => void {
 

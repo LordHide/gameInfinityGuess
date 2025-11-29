@@ -4,10 +4,10 @@ import {
   type ConexionStatusState,
   type PlayerStatsState,
   type statusPlayer,
-} from "../../types/typesStore.tsx";
+} from "@local-types/typesStore.tsx";
 
-import { useConexionStatusProfileData } from "../../hooks/Stores/useConexionStatusProfileData.tsx";
-import { usePlayerStats } from "../../hooks/Stores/usePlayerStats.tsx";
+import { useConexionStatusProfileData } from "@Stores/useConexionStatusProfileData.tsx";
+import { usePlayerStats } from "@Stores/usePlayerStats.tsx";
 
 export function EndGamePanel(value: {
   typeOfEnd: statusPlayer;

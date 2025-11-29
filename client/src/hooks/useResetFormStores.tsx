@@ -1,8 +1,8 @@
-import { useSkills } from './Stores/useSkills.tsx';
-import { useStats } from './Stores/useStats.tsx';
-import { useEquipment } from './Stores/useEquipment.tsx';
-import { useWeapons } from './Stores/useWeapons.tsx';
-import { useNameList } from './Stores/useNameList.tsx';
+import { useSkills } from '@Stores/useSkills.tsx';
+import { useStats } from '@Stores/useStats.tsx';
+import { useEquipment } from '@Stores/useEquipment.tsx';
+import { useWeapons } from '@Stores/useWeapons.tsx';
+import { useNameList } from '@Stores/useNameList.tsx';
 
 export function useResetFormStores(): () => void {
     const skillsStore = useSkills();

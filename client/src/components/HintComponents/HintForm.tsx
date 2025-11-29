@@ -1,18 +1,18 @@
-import { type TextOptionsValues, type StatDataState, type StoreTypes, type ConexionStatusColectionState, type ExtraValueTypes, type LoadingState } from '../../types/typesStore.tsx';
+import { type TextOptionsValues, type StatDataState, type StoreTypes, type ConexionStatusColectionState, type ExtraValueTypes, type LoadingState } from '@local-types/typesStore.tsx';
 
 import { Spinner, Button, Center, Dialog } from "@chakra-ui/react";
 
-import { useJSONEmpty } from '../../hooks/useJSONEmpty.tsx';
-import { useActiveFormStore } from '../../hooks/useActiveFormStore.tsx';
-import { useCheckValueProfile } from '../../hooks/useCheckValueProfile.tsx';
-import { useLoadStatsStoreData } from '../../hooks/useLoadStatsStoreData.tsx';
+import { useJSONEmpty } from '@hooks/useJSONEmpty.tsx';
+import { useActiveFormStore } from '@hooks/useActiveFormStore.tsx';
+import { useCheckValueProfile } from '@hooks/useCheckValueProfile.tsx';
+import { useLoadStatsStoreData } from '@hooks/useLoadStatsStoreData.tsx';
 
 import HintFormSingleNumber from './HintFormSingleNumber.tsx';
 import HintFormDoubleNumber from './HintFormDoubleNumber.tsx';
 import HintFormTextOptions from './HintFormTextOptions.tsx';
 import HintSelector from './HintSelector.tsx';
 
-import { useConexionStatusStatsStoreData } from '../../hooks/Stores/useConexionStatusStatsStoreData.tsx';
+import { useConexionStatusStatsStoreData } from '@Stores/useConexionStatusStatsStoreData.tsx';
 
 export function HintForm(state: { typeStore: StoreTypes }): React.JSX.Element {
 

@@ -1,8 +1,8 @@
 import { Combobox, useFilter, useListCollection } from "@chakra-ui/react";
 
-import { type StatColectionValues, type StatDataState } from '../../types/typesStore.tsx';
+import { type StatColectionValues, type StatDataState } from '@local-types/typesStore.tsx';
 
-import { useNameList } from "../../hooks/Stores/useNameList.tsx";
+import { useNameList } from "@Stores/useNameList.tsx";
 
 export function GuessSelector(): React.JSX.Element {
 

@@ -1,12 +1,12 @@
 
-import '../../css/App.css'
+import '@css/App.css'
 
-import { type ConexionStatusState, type LoadingState } from '../../types/typesStore.tsx';
+import { type ConexionStatusState, type LoadingState } from '@local-types/typesStore.tsx';
 
-import { useLoadProfileData } from '../../hooks/useLoadProfileData.tsx';
+import { useLoadProfileData } from '@hooks/useLoadProfileData.tsx';
 
-import { useConexionStatusProfileData } from '../../hooks/Stores/useConexionStatusProfileData.tsx';
-import { type GameModeState, useGameMode } from '../../hooks/Stores/useGameMode.tsx';
+import { useConexionStatusProfileData } from '@Stores/useConexionStatusProfileData.tsx';
+import { type GameModeState, useGameMode } from '@Stores/useGameMode.tsx';
 
 import LoadinScreen from '../GeneralComponents/LoadinScreen.tsx';
 import GameScreen from '../GeneralComponents/GameScreen.tsx';

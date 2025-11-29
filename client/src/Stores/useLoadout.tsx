@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { type LoadoutState } from '../../types/typesStore'
+import { type LoadoutState } from '@local-types/typesStore'
 
 export const useLoadout = create<LoadoutState>((set) => ({
     loadout: [],

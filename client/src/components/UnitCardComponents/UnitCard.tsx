@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-
-import '../../css/UnitCardComponents/UnitCard.css'
+import '@css/UnitCardComponents/UnitCard.css'
 
 import UnitCardStats from './UnitCardStats'
 import UnitCardEquipment from './UnitCardEquipment'

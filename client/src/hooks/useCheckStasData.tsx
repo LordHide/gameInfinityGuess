@@ -1,5 +1,5 @@
-import { type StatDataState } from '../types/typesStore.tsx'
-import { useSkills } from './Stores/useSkills.tsx';
+import { type StatDataState } from '@local-types/typesStore.tsx'
+import { useSkills } from '@Stores/useSkills.tsx';
 
 export function useCheckStasData(): boolean {
 

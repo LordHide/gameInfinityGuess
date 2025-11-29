@@ -1,11 +1,14 @@
 import { NumberInput } from "@chakra-ui/react";
 
-import { type StatDataState, type TextOptionsValues } from '../../types/typesStore'
+import { type StatDataState, type TextOptionsValues } from '@local-types/typesStore'
 
 export function HintFormDoubleNumber(state: { currentStore: StatDataState, textOptions: TextOptionsValues[] }): React.JSX.Element {
 
     const defaulOptions: TextOptionsValues = state.textOptions[0] as TextOptionsValues;
     const defaulValue: string[] = defaulOptions.value.split("-");
+
+    if (state.currentStore.aplyedExtraValue !== defaulOptions.value)
+        state.currentStore.updateAplyedExtraValue(defaulOptions.value);
 
     return <>
         <NumberInput.Root

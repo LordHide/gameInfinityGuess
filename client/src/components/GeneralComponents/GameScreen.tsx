@@ -4,7 +4,7 @@ import TopBanner from '../AppScreenComponents/TopBanner.tsx';
 import MainBody from '../AppScreenComponents/MainBody.tsx';
 import Mockup from '../AppScreenComponents/Mockup.tsx';
 
-import '../../css/GeneralComponents/LoadinScreen.css';
+import '@css/GeneralComponents/LoadinScreen.css';
 
 export function GameScreen(): React.JSX.Element {
 

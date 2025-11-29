@@ -24,6 +24,29 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@Stores/*": [
+        "./src/Stores/*"
+      ],
+      "@css/*": [
+        "./src/css/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@local-types/*": [
+        "./src/types/*"
+      ]
+    }
   },
   "include": [
     "src"

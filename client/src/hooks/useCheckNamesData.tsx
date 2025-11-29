@@ -1,5 +1,5 @@
-import { type StatDataState } from '../types/typesStore.tsx'
-import { useNameList } from './Stores/useNameList.tsx';
+import { type StatDataState } from '@local-types/typesStore.tsx'
+import { useNameList } from '@Stores/useNameList.tsx';
 
 export function useCheckNamesData(): boolean {
 

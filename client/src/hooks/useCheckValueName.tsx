@@ -1,10 +1,10 @@
-import { type StatDataState, type ProfileDataState, type ProfileState, type Stats, type StatsMap, type LoadoutState, type Loadout, type PlayerStatsState } from '../types/typesStore.tsx'
+import { type OptionStatus, type StatDataState, type ProfileDataState, type ProfileState, type Stats, type StatsMap, type LoadoutState, type Loadout, type PlayerStatsState } from '@local-types/typesStore.tsx'
 
-import { useProfileData } from './Stores/useProfileData.tsx';
-import { useDiscoveredData } from './Stores/useDiscoveredData.tsx';
-import { useNameList } from "./Stores/useNameList.tsx";
-import { useLoadout } from "./Stores/useLoadout.tsx";
-import { usePlayerStats } from './Stores/usePlayerStats.tsx';
+import { useProfileData } from '@Stores/useProfileData.tsx';
+import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
+import { useNameList } from "@Stores/useNameList.tsx";
+import { useLoadout } from "@Stores/useLoadout.tsx";
+import { usePlayerStats } from '@Stores/usePlayerStats.tsx';
 
 
 export function useCheckValueName(): () => void {
@@ -21,15 +21,18 @@ export function useCheckValueName(): () => void {
         if (aplyedExtraValue !== undefined && profileStore.name != aplyedExtraValue) {
             const currentHealth: number = playerStatsStore.health;
             const currentAccuracy: number = playerStatsStore.accuracy;
-            if (currentHealth > 0)
-                playerStatsStore.updateHealth(currentHealth - 1);
-            if (currentAccuracy > 0)
+            if (currentHealth > 0) {
+                playerStatsStore.loseHealth(1);
+                playerStatsStore.checkPlayerIsDead();
+            }
+            if (currentAccuracy > 0) {
                 playerStatsStore.updateAccuracy(currentAccuracy - 20);
+            }
         }
         if (profileStore.name == aplyedExtraValue) {
             const fullStats: Stats = profileStore.stats;
-            const fullSKills: string[] = profileStore.skills;
-            const fullEquipments: string[] = profileStore.equipments;
+            const fullSKills: OptionStatus[] = profileStore.skills;
+            const fullEquipments: OptionStatus[] = profileStore.equipments;
             const fullLoadout: Loadout[] = profileStore.loadout;
             const updatedStats: StatsMap = new Map();
             const updatedLoadout: Map<string, string[]>[] = [];
@@ -52,7 +55,7 @@ export function useCheckValueName(): () => void {
             dicoveredStore.updateEquipment(fullEquipments);
             loadoutDataStore.updateLoadout(updatedLoadout);
             dicoveredStore.updateName(aplyedExtraValue as string);
-            document.dispatchEvent(new KeyboardEvent('keypress', { 'key': 'Escape', 'shiftKey': true }));
+            playerStatsStore.updateStatus("win");
         }
     }
 
