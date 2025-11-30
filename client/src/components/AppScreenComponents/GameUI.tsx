@@ -15,10 +15,10 @@ export function GameUI(): React.JSX.Element {
     let valor: number = 0;
 
     return <div className="gameUI">
-        <div className="gameUI-health" title='test'>
+        <div className="gameUI-health">
             {arrayHealth.map(() => (<img key={"heart" + valor++} src={heart} />))}
         </div>
-        <div className="gameUI-accuracy" title='test'>
+        <div className="gameUI-accuracy">
             <img src={crosshair} />
             <span className="gameUI-accuracy-text">{playerStatsStore.accuracy}%</span>
         </div>

@@ -6,6 +6,8 @@ export type ExtraValueTypes =
 export type StoreTypes = "skills" | "equipments" | "weapons" | "stats";
 export type LoadingState = "sending" | "loading" | "pending" | "error";
 export type statusPlayer = "active" | "defeated" | "win";
+export type OptionStatusStates = "+" | "++" | "-" | "--" | "";
+export type OptionStatusClassName = "failed" | "succes" | "";
 export type AplyedValue = string | undefined;
 
 export interface StatDataState {
@@ -101,12 +103,17 @@ export interface ProfileState {
   updateStats: (newStats: StatsMap) => void;
   updateEquipment: (newEquipment: OptionStatus[]) => void;
   updateSkills: (newSkills: OptionStatus[]) => void;
+  getStatsOptionStatus: (
+    originalValue: string,
+    enteringValue: string
+  ) => OptionStatus;
   updateLoadout: () => void;
 }
 
 export interface OptionStatus {
   value: string;
-  status: "+" | "++" | "-" | "--" | "";
+  status: OptionStatusStates;
+  className?: OptionStatusClassName;
 }
 
 

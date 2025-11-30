@@ -16,7 +16,7 @@ export function UnitCardStats() {
                 <div key={index}>{label}</div>
             ))}
             {labels.map((label, index) => (
-                <div key={index}>{(statsMap.get(label)?.status ?? "") + statsMap.get(label)?.value}</div>
+                <div key={index} className={statsMap.get(label)?.className ?? ""}>{(statsMap.get(label)?.status ?? "") + statsMap.get(label)?.value}</div>
             ))}
         </div>
     </>;

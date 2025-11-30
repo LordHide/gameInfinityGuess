@@ -3,14 +3,10 @@
     height: 12vh;
 }
 
-.player-section div {
+.player-section>div {
     height: 100%;
     width: 36%;
     display: flex;
-}
-
-.player-buttons {
-    /* padding-left: 5%; */
 }
 
 .gameUI {
@@ -23,13 +19,17 @@
 
 .gameUI-health,
 .gameUI-accuracy {
-    width: 50%;
+    width: 36%;
     height: 100%;
-    display: flex;
+}
+
+.gameUI-accuracy {
+    display: none;
 }
 
 .gameUI-health {
     margin-right: 25px;
+    display: flex;
 }
 
 .gameUI-health img,

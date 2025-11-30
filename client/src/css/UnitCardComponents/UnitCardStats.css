@@ -24,7 +24,45 @@
     width: 3vw;
 }
 
+.unit-card-stats>div {
+    transition: color 0.3s ease;
+}
+
+.unit-card-stats .failed {
+    color: #c0392b;
+}
+
+.unit-card-stats .succes {
+    color: #27ae60;
+}
+
+.unit-card-stats .succes,
+.unit-card-stats .failed {
+    /* animation-name: grow-shrink;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+}
+
 .unit-card-stats div,
 .unit-card-numbers div {
     width: 5vw;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+
+@keyframes grow-shrink {
+    0% {
+        font-size: 1.3em;
+    }
+
+    50% {
+        font-size: 1.5em;
+    }
+
+    100% {
+        font-size: 1.3em;
+    }
+
 }

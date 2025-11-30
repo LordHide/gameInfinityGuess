@@ -25,20 +25,13 @@ export function useCheckValueProfile(typeStore: StoreTypes): () => void {
             return;
         }
         if (statSelected.value == aplyedExtraValue) {
-            statSelected.value = aplyedExtraValue;
-            statSelected.status = "";
-            activeStat.set(selectedValue as keyof Stats, statSelected as OptionStatus);
+            const updatedOptionStatus: OptionStatus = dicoveredStore.getStatsOptionStatus(statSelected.value, aplyedExtraValue);
+            activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
             successUpdate = true;
         }
         else {
-            const selectedValueArray: string[] = selectedValue?.split("-") ?? [];
-            aplyedExtraValue.split("-").forEach((currentValue, index) => {
-                if (Number(selectedValueArray[index]) >= Number(currentValue) && Number(selectedValueArray[index]) - 5 <= Number(currentValue)) {
-                    statSelected.status = "-";
-                    activeStat.set(selectedValue as keyof Stats, statSelected as OptionStatus);
-                    successUpdate = true;
-                }
-            });
+            const updatedOptionStatus: OptionStatus = dicoveredStore.getStatsOptionStatus(statSelected.value, aplyedExtraValue);
+            activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
         }
 
         dicoveredStore.updateStats(activeStat);

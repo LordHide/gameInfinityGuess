@@ -22,9 +22,7 @@ export function useAnonymizeProfileData(jsonObject: ProfileData): DiscoveredData
         for (const key of keys) {
             let loadoutSection: string[] = loadoutColection[key as keyof Loadout] as string[];
             let anonymizeSection: string[] = [];
-            for (const loadoutitem of loadoutSection) {
-                anonymizeSection.push("??????????");
-            }
+            loadoutSection.map(() => { anonymizeSection.push("??????????"); });
             loadoutMap.set(key, anonymizeSection);
         }
         loadoutMapArray.push(loadoutMap);
@@ -34,13 +32,8 @@ export function useAnonymizeProfileData(jsonObject: ProfileData): DiscoveredData
         statsMap.set(key, { value: "??", status: "" });
     }
 
-    for (const key in jsonObject.equipments) {
-        equipmentArray.push({ value: "??????????", status: "" });
-    }
-
-    for (const key in jsonObject.skills) {
-        skillsArray.push({ value: "??????????", status: "" });
-    }
+    jsonObject.equipments.map(() => { equipmentArray.push({ value: "??????????", status: "" }); });
+    jsonObject.skills.map(() => { skillsArray.push({ value: "??????????", status: "" }); });
 
     return ["???????????????????????????????????", statsMap, equipmentArray, skillsArray, loadoutMapArray];
 }
