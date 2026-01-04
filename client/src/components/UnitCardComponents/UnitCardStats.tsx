@@ -2,6 +2,7 @@ import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
 
 import { type ProfileState, type StatsMap } from '@/types/typesStore';
 
+import status from "@assets/bitmap.svg"
 
 import '@css/UnitCardComponents/UnitCardStats.css';
 
@@ -16,7 +17,10 @@ export function UnitCardStats() {
                 <div key={index}>{label}</div>
             ))}
             {labels.map((label, index) => (
-                <div key={index} className={statsMap.get(label)?.className ?? ""}>{(statsMap.get(label)?.status ?? "") + statsMap.get(label)?.value}</div>
+                <div key={index} className={statsMap.get(label)?.className ?? ""}>
+                    {statsMap.get(label)?.status != "" && <img className={statsMap.get(label)?.status} src={status} alt="status icon" />}
+                    <span>{statsMap.get(label)?.value}</span>
+                </div>
             ))}
         </div>
     </>;

@@ -31,8 +31,10 @@ def get_profile_data():
     return {
         "data": {
             "name": "Fusiliers", 
-            "equipments": [], 
-            "skills": [], 
+            "equipments": [{"value":"FastPanda", "status": ""}], 
+            "skills": [{
+                    "value":"Forward Observer", "status": ""
+                },], 
             "stats":{
                 "MOV": {
                     "value":"4-4", "status": ""

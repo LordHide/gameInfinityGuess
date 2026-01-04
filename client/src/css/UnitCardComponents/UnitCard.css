@@ -38,6 +38,10 @@
     background-color: #242424;
     padding-top: 3vh;
     text-align: center;
+    background-color: #444;
+    box-shadow: inset 0px 2px 8px 0 #222;
+    clip-path: polygon(3% 0, 100% 0, 100% 85%, 97% 100%, 3% 100%, 0 85%, 0 15%);
+    padding: 28px 15px 15px 15px;
 }
 
 .unit-card {

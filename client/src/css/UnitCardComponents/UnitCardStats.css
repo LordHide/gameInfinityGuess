@@ -36,12 +36,21 @@
     color: #27ae60;
 }
 
-.unit-card-stats .succes,
-.unit-card-stats .failed {
-    /* animation-name: grow-shrink;
-    animation-duration: 3000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; */
+.unit-card-stats .failed img {
+    filter: invert(34%) sepia(47%) saturate(2556%) hue-rotate(349deg) brightness(82%) contrast(79%);
+}
+
+.higher {
+    rotate: 180deg;
+}
+
+.unit-card-stats div {
+    display: flex;
+    justify-content: center;
+}
+
+.unit-card-stats img {
+    width: 20%;
 }
 
 .unit-card-stats div,

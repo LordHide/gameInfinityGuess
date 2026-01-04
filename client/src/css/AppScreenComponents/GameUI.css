@@ -52,3 +52,37 @@
 .hint-button {
     margin-left: 5%;
 }
+
+.health-lost {
+    animation-name: disapear;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes disapear {
+    from {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}

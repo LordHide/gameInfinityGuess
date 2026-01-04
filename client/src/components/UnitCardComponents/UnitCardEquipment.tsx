@@ -12,7 +12,7 @@ export function UnitCardEquipment(): React.JSX.Element {
     return <div className="unit-card-equipment">
         {equipment.length > 0 ? <span>Equipment:</span> : <></>}
         {equipment.map((item: OptionStatus, index: number) => (
-            <span key={index + "equipment"}>{item.status + item.value}</span>
+            <span className={item?.className ?? ""} key={index + "equipment"}>{item.status + item.value}</span>
         ))}
     </div>;
 }

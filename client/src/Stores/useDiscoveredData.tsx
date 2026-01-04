@@ -21,10 +21,25 @@ export const useDiscoveredData = create<ProfileState>((set) => ({
             status = "";
             className = "succes";
         } else if (Number(enteringValue) > Number(originalValue)) {
-            status = "+";
+            status = "higher";
             className = "failed";
         } else if (Number(enteringValue) < Number(originalValue)) {
-            status = "-";
+            status = "smaller";
+            className = "failed";
+        }
+        return { value: enteringValue, status: status, className: className };
+    },
+    getItemOptionStatus: (originalValue: string, enteringValue: string): OptionStatus => {
+        let status: OptionStatusStates = "";
+        let className: OptionStatusClassName = "";
+        if (originalValue === enteringValue) {
+            status = "";
+            className = "succes";
+        } else if (Number(enteringValue) > Number(originalValue)) {
+            status = "higher";
+            className = "failed";
+        } else if (Number(enteringValue) < Number(originalValue)) {
+            status = "smaller";
             className = "failed";
         }
         return { value: enteringValue, status: status, className: className };

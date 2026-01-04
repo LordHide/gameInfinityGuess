@@ -22,6 +22,7 @@ export function useCheckValueName(): () => void {
             const currentHealth: number = playerStatsStore.health;
             const currentAccuracy: number = playerStatsStore.accuracy;
             if (currentHealth > 0) {
+                playerStatsStore.updatePreviousHealth();
                 playerStatsStore.loseHealth(1);
                 playerStatsStore.checkPlayerIsDead();
             }

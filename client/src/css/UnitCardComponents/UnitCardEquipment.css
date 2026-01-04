@@ -11,3 +11,11 @@
     text-align: center;
     margin-left: 1vw;
 }
+
+.unit-card-loadout-element .failed {
+    color: #c0392b;
+}
+
+.unit-card-loadout-element .succes {
+    color: #27ae60;
+}

@@ -10,13 +10,14 @@ import { usePlayerStats } from '@Stores/usePlayerStats.tsx';
 export function GameUI(): React.JSX.Element {
 
     const playerStatsStore: PlayerStatsState = usePlayerStats();
-    const arrayHealth: number[] = new Array(playerStatsStore.health);
+    const arrayHealth: number[] = new Array(playerStatsStore.previousHealth);
+    const healthCounter: number = playerStatsStore.health;
     arrayHealth.fill(1)
     let valor: number = 0;
 
     return <div className="gameUI">
         <div className="gameUI-health">
-            {arrayHealth.map(() => (<img key={"heart" + valor++} src={heart} />))}
+            {arrayHealth.map((value: number, index: number) => (<img className={index < healthCounter ? "health-active" : "health-lost"} key={"heart" + valor++} src={heart} />))}
         </div>
         <div className="gameUI-accuracy">
             <img src={crosshair} />
