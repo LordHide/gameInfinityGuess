@@ -6,7 +6,12 @@ export type ExtraValueTypes =
 export type StoreTypes = "skills" | "equipments" | "weapons" | "stats";
 export type LoadingState = "sending" | "loading" | "pending" | "error";
 export type statusPlayer = "active" | "defeated" | "win";
-export type OptionStatusStates = "higher" | "much-higher" | "smaller" | "much-smaller" | "";
+export type OptionStatusStates =
+  | "higher"
+  | "much-higher"
+  | "smaller"
+  | "much-smaller"
+  | "";
 export type OptionStatusClassName = "failed" | "succes" | "";
 export type AplyedValue = string | undefined;
 
@@ -116,10 +121,9 @@ export interface ProfileState {
 
 export interface OptionStatus {
   value: string;
-  status: OptionStatusStates;
-  className?: OptionStatusClassName;
+  status: OptionStatusStates[];
+  className?: OptionStatusClassName[];
 }
-
 
 export interface PlayerStatsState {
   health: number;

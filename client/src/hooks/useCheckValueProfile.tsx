@@ -1,186 +1,216 @@
-import { type StatDataState, type OptionStatus, type StoreTypes, type Stats, type StatsMap, type LoadoutState, type AplyedValue, type ProfileDataState, type ProfileState, type PlayerStatsState } from '@local-types/typesStore.tsx'
-import { useActiveFormStore } from './useActiveFormStore.tsx';
-import { useProfileData } from '@Stores/useProfileData.tsx';
-import { useDiscoveredData } from '@Stores/useDiscoveredData.tsx';
-import { useLoadout } from '@Stores/useLoadout.tsx';
-import { usePlayerStats } from '@Stores/usePlayerStats.tsx';
-
+import {
+  type StatDataState,
+  type OptionStatus,
+  type StoreTypes,
+  type Stats,
+  type StatsMap,
+  type LoadoutState,
+  type AplyedValue,
+  type ProfileDataState,
+  type ProfileState,
+  type PlayerStatsState,
+} from "@local-types/typesStore.tsx";
+import { useActiveFormStore } from "./useActiveFormStore.tsx";
+import { useProfileData } from "@Stores/useProfileData.tsx";
+import { useDiscoveredData } from "@Stores/useDiscoveredData.tsx";
+import { useLoadout } from "@Stores/useLoadout.tsx";
+import { usePlayerStats } from "@Stores/usePlayerStats.tsx";
 
 export function useCheckValueProfile(typeStore: StoreTypes): () => void {
+  const profileStore: ProfileDataState = useProfileData();
+  const dicoveredStore: ProfileState = useDiscoveredData();
+  const playerStatsStore: PlayerStatsState = usePlayerStats();
+  const loadoutDataStore: LoadoutState = useLoadout();
 
-    const profileStore: ProfileDataState = useProfileData();
-    const dicoveredStore: ProfileState = useDiscoveredData();
-    const playerStatsStore: PlayerStatsState = usePlayerStats();
-    const loadoutDataStore: LoadoutState = useLoadout();
+  const activeStore: StatDataState = useActiveFormStore(typeStore);
+  const selectedValue: string | undefined = activeStore.selectedValue?.value;
+  const aplyedExtraValue: AplyedValue = activeStore.aplyedExtraValue;
 
-    const activeStore: StatDataState = useActiveFormStore(typeStore);
-    const selectedValue: string | undefined = activeStore.selectedValue?.value;
-    const aplyedExtraValue: AplyedValue = activeStore.aplyedExtraValue;
-
-    const functCheckStats = () => {
-        const activeStat: StatsMap = dicoveredStore.stats;
-        const statSelected: OptionStatus = profileStore.stats[selectedValue as keyof Stats];
-        let successUpdate: boolean = false;
-        if (aplyedExtraValue === undefined) {
-            return;
-        }
-        if (statSelected.value == aplyedExtraValue) {
-            const updatedOptionStatus: OptionStatus = dicoveredStore.getStatsOptionStatus(statSelected.value, aplyedExtraValue);
-            activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
-            successUpdate = true;
-        }
-        else {
-            const updatedOptionStatus: OptionStatus = dicoveredStore.getStatsOptionStatus(statSelected.value, aplyedExtraValue);
-            activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
-        }
-
-        dicoveredStore.updateStats(activeStat);
-
-        if (!successUpdate) {
-            const currentAccuracy: number = playerStatsStore.accuracy;
-            if (currentAccuracy > 0)
-                playerStatsStore.updateAccuracy(currentAccuracy - 10);
-        }
+  const functCheckStats = () => {
+    const activeStat: StatsMap = dicoveredStore.stats;
+    const statSelected: OptionStatus =
+      profileStore.stats[selectedValue as keyof Stats];
+    let successUpdate: boolean = false;
+    if (aplyedExtraValue === undefined) {
+      return;
+    }
+    if (statSelected.value == aplyedExtraValue) {
+      const updatedOptionStatus: OptionStatus =
+        dicoveredStore.getStatsOptionStatus(
+          statSelected.value,
+          aplyedExtraValue
+        );
+      activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
+      successUpdate = true;
+    } else {
+      const updatedOptionStatus: OptionStatus =
+        dicoveredStore.getStatsOptionStatus(
+          statSelected.value,
+          aplyedExtraValue
+        );
+      activeStat.set(selectedValue as keyof Stats, updatedOptionStatus);
     }
 
-    const functCheckSkills = () => {
-        const activeSkill: OptionStatus[] = dicoveredStore.skills;
-        let selectedSkill: string = selectedValue as string;
-        let successUpdate: boolean = false;
+    dicoveredStore.updateStats(activeStat);
 
-        if (aplyedExtraValue !== undefined)
-            selectedSkill += " (" + aplyedExtraValue + ")"
+    if (!successUpdate) {
+      const currentAccuracy: number = playerStatsStore.accuracy;
+      if (currentAccuracy > 0)
+        playerStatsStore.updateAccuracy(currentAccuracy - 10);
+    }
+  };
 
-        const skillPosition: number = profileStore.skills.indexOf({ value: selectedSkill, status: "" })
+  const functCheckSkills = () => {
+    const activeSkill: OptionStatus[] = dicoveredStore.skills;
+    let selectedSkill: string = selectedValue as string;
+    let successUpdate: boolean = false;
 
-        if (skillPosition !== -1) {
-            activeSkill[skillPosition] = { value: selectedSkill, status: "" }
-            successUpdate = true;
+    if (aplyedExtraValue !== undefined)
+      selectedSkill += " (" + aplyedExtraValue + ")";
+
+    const skillPosition: number = profileStore.skills.indexOf({
+      value: selectedSkill,
+      status: [""],
+    });
+
+    if (skillPosition !== -1) {
+      activeSkill[skillPosition] = { value: selectedSkill, status: [""] };
+      successUpdate = true;
+    } else {
+      profileStore.loadout.forEach((currentValue, index) => {
+        const loadoutSkillPosition: number =
+          currentValue.skills.indexOf(selectedSkill);
+        if (loadoutSkillPosition !== -1) {
+          const loadout: Map<string, string[]>[] = loadoutDataStore.loadout;
+          const loadoutSkills: string[] = loadout[index].get(
+            "skills"
+          ) as string[];
+          loadoutSkills[loadoutSkillPosition] = selectedSkill;
+          loadout[index].set("skills", loadoutSkills);
+          loadoutDataStore.updateLoadout(loadout);
+          successUpdate = true;
         }
-        else {
-            profileStore.loadout.forEach((currentValue, index) => {
+      });
 
-                const loadoutSkillPosition: number = currentValue.skills.indexOf(selectedSkill)
-                if (loadoutSkillPosition !== -1) {
-                    const loadout: Map<string, string[]>[] = loadoutDataStore.loadout
-                    const loadoutSkills: string[] = loadout[index].get("skills") as string[];
-                    loadoutSkills[loadoutSkillPosition] = selectedSkill;
-                    loadout[index].set("skills", loadoutSkills)
-                    loadoutDataStore.updateLoadout(loadout)
-                    successUpdate = true;
-                }
-            });
-
-            if (!successUpdate) {
-                const currentAccuracy: number = playerStatsStore.accuracy;
-                if (currentAccuracy > 0)
-                    playerStatsStore.updateAccuracy(currentAccuracy - 10);
-            }
-        }
-
-        dicoveredStore.updateSkills(activeSkill)
+      if (!successUpdate) {
+        const currentAccuracy: number = playerStatsStore.accuracy;
+        if (currentAccuracy > 0)
+          playerStatsStore.updateAccuracy(currentAccuracy - 10);
+      }
     }
 
-    const functCheckEquipments = () => {
-        const activeEquipments: OptionStatus[] = dicoveredStore.equipments;
-        let selectedEquipments: string = selectedValue as string;
-        let successUpdate: boolean = false;
+    dicoveredStore.updateSkills(activeSkill);
+  };
 
-        if (aplyedExtraValue !== undefined)
-            selectedEquipments += " (" + aplyedExtraValue + ")"
+  const functCheckEquipments = () => {
+    const activeEquipments: OptionStatus[] = dicoveredStore.equipments;
+    let selectedEquipments: string = selectedValue as string;
+    let successUpdate: boolean = false;
 
-        const equipmentsPosition: number = profileStore.equipments.indexOf({ value: selectedEquipments, status: "" })
+    if (aplyedExtraValue !== undefined)
+      selectedEquipments += " (" + aplyedExtraValue + ")";
 
-        if (equipmentsPosition !== -1) {
-            activeEquipments[equipmentsPosition] = { value: selectedEquipments, status: "" }
-            successUpdate = true;
+    const equipmentsPosition: number = profileStore.equipments.indexOf({
+      value: selectedEquipments,
+      status: [""],
+    });
+
+    if (equipmentsPosition !== -1) {
+      activeEquipments[equipmentsPosition] = {
+        value: selectedEquipments,
+        status: [""],
+      };
+      successUpdate = true;
+    } else {
+      profileStore.loadout.forEach((currentValue, index) => {
+        const loadoutEquipmentsPosition: number =
+          currentValue.equipments.indexOf(selectedEquipments);
+        if (loadoutEquipmentsPosition !== -1) {
+          const loadout: Map<string, string[]>[] = loadoutDataStore.loadout;
+          const loadoutEquipments: string[] = loadout[index].get(
+            "equipments"
+          ) as string[];
+          loadoutEquipments[loadoutEquipmentsPosition] = selectedEquipments;
+          loadout[index].set("equipments", loadoutEquipments);
+          loadoutDataStore.updateLoadout(loadout);
+          successUpdate = true;
         }
-        else {
-            profileStore.loadout.forEach((currentValue, index) => {
+      });
 
-                const loadoutEquipmentsPosition: number = currentValue.equipments.indexOf(selectedEquipments)
-                if (loadoutEquipmentsPosition !== -1) {
-                    const loadout: Map<string, string[]>[] = loadoutDataStore.loadout
-                    const loadoutEquipments: string[] = loadout[index].get("equipments") as string[];
-                    loadoutEquipments[loadoutEquipmentsPosition] = selectedEquipments;
-                    loadout[index].set("equipments", loadoutEquipments)
-                    loadoutDataStore.updateLoadout(loadout)
-                    successUpdate = true;
-                }
-            });
-
-            if (!successUpdate) {
-                const currentAccuracy: number = playerStatsStore.accuracy;
-                if (currentAccuracy > 0)
-                    playerStatsStore.updateAccuracy(currentAccuracy - 10);
-            }
-        }
-
-        dicoveredStore.updateEquipment(activeEquipments)
+      if (!successUpdate) {
+        const currentAccuracy: number = playerStatsStore.accuracy;
+        if (currentAccuracy > 0)
+          playerStatsStore.updateAccuracy(currentAccuracy - 10);
+      }
     }
 
-    const functCheckWeapons = () => {
-        let selectedWeapon: string = selectedValue as string;
-        let successUpdate: boolean = false;
+    dicoveredStore.updateEquipment(activeEquipments);
+  };
 
-        if (aplyedExtraValue !== undefined)
-            selectedWeapon += " (" + aplyedExtraValue + ")"
+  const functCheckWeapons = () => {
+    let selectedWeapon: string = selectedValue as string;
+    let successUpdate: boolean = false;
 
-        else {
-            profileStore.loadout.forEach((currentValue, index) => {
-
-                const loadoutRangeWeaponPosition: number = currentValue.Range_Weapons.indexOf(selectedWeapon)
-                if (loadoutRangeWeaponPosition !== -1) {
-                    const loadout: Map<string, string[]>[] = loadoutDataStore.loadout
-                    const loadoutRangeWeapon: string[] = loadout[index].get("Range_Weapons") as string[];
-                    loadoutRangeWeapon[loadoutRangeWeaponPosition] = selectedWeapon;
-                    loadout[index].set("Range_Weapons", loadoutRangeWeapon)
-                    loadoutDataStore.updateLoadout(loadout)
-                    successUpdate = true;
-                }
-                const loadoutMeleeWeaponPosition: number = currentValue.Melee_Weapons.indexOf(selectedWeapon)
-                if (loadoutMeleeWeaponPosition !== -1) {
-                    const loadout: Map<string, string[]>[] = loadoutDataStore.loadout
-                    const loadoutMeleeWeapon: string[] = loadout[index].get("Melee_Weapons") as string[];
-                    loadoutMeleeWeapon[loadoutMeleeWeaponPosition] = selectedWeapon;
-                    loadout[index].set("Melee_Weapons", loadoutMeleeWeapon)
-                    loadoutDataStore.updateLoadout(loadout)
-                    successUpdate = true;
-                }
-            });
-
-            if (!successUpdate) {
-                const currentAccuracy: number = playerStatsStore.accuracy;
-                if (currentAccuracy > 0)
-                    playerStatsStore.updateAccuracy(currentAccuracy - 10);
-            }
+    if (aplyedExtraValue !== undefined)
+      selectedWeapon += " (" + aplyedExtraValue + ")";
+    else {
+      profileStore.loadout.forEach((currentValue, index) => {
+        const loadoutRangeWeaponPosition: number =
+          currentValue.Range_Weapons.indexOf(selectedWeapon);
+        if (loadoutRangeWeaponPosition !== -1) {
+          const loadout: Map<string, string[]>[] = loadoutDataStore.loadout;
+          const loadoutRangeWeapon: string[] = loadout[index].get(
+            "Range_Weapons"
+          ) as string[];
+          loadoutRangeWeapon[loadoutRangeWeaponPosition] = selectedWeapon;
+          loadout[index].set("Range_Weapons", loadoutRangeWeapon);
+          loadoutDataStore.updateLoadout(loadout);
+          successUpdate = true;
         }
-    }
-
-    return () => {
-
-        switch (typeStore) {
-            case "stats":
-                functCheckStats();
-                break;
-
-            case "skills":
-                functCheckSkills();
-                break;
-
-            case "equipments":
-                functCheckEquipments();
-                break;
-
-            case "weapons":
-                functCheckWeapons();
-                break;
-
-            default:
-                break;
+        const loadoutMeleeWeaponPosition: number =
+          currentValue.Melee_Weapons.indexOf(selectedWeapon);
+        if (loadoutMeleeWeaponPosition !== -1) {
+          const loadout: Map<string, string[]>[] = loadoutDataStore.loadout;
+          const loadoutMeleeWeapon: string[] = loadout[index].get(
+            "Melee_Weapons"
+          ) as string[];
+          loadoutMeleeWeapon[loadoutMeleeWeaponPosition] = selectedWeapon;
+          loadout[index].set("Melee_Weapons", loadoutMeleeWeapon);
+          loadoutDataStore.updateLoadout(loadout);
+          successUpdate = true;
         }
-    }
+      });
 
+      if (!successUpdate) {
+        const currentAccuracy: number = playerStatsStore.accuracy;
+        if (currentAccuracy > 0)
+          playerStatsStore.updateAccuracy(currentAccuracy - 10);
+      }
+    }
+  };
+
+  return () => {
+    switch (typeStore) {
+      case "stats":
+        functCheckStats();
+        break;
+
+      case "skills":
+        functCheckSkills();
+        break;
+
+      case "equipments":
+        functCheckEquipments();
+        break;
+
+      case "weapons":
+        functCheckWeapons();
+        break;
+
+      default:
+        break;
+    }
+  };
 }
 
 export default useCheckValueProfile;
